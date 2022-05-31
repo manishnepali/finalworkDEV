@@ -5,7 +5,37 @@
 },
 {
     "id" : "drink",
-    "name" : "get a drink"
+    "name" : "chill"
+
+},
+{
+    "id" : "drink",
+    "name" : "coffee"
+
+},
+{
+    "id" : "drink",
+    "name" : "hang out"
+
+},
+{
+    "id" : "drink",
+    "name" : "take a selfie"
+
+},
+{
+    "id" : "drink",
+    "name" : "museum"
+
+},
+{
+    "id" : "drink",
+    "name" : "pastry"
+
+},
+{
+    "id" : "drink",
+    "name" : "relax"
 
 },
 {
@@ -14,8 +44,38 @@
 
 },
 {
-    "id" : "drink",
-    "name" : "get a drink"
+"id" : "drink",
+"name" : "chill"
+
+},
+{
+"id" : "drink",
+"name" : "coffee"
+
+},
+{
+"id" : "drink",
+"name" : "hang out"
+
+},
+{
+"id" : "drink",
+"name" : "take a selfie"
+
+},
+{
+"id" : "drink",
+"name" : "museum"
+
+},
+{
+"id" : "drink",
+"name" : "pastry"
+
+},
+{
+"id" : "drink",
+"name" : "relax"
 
 },
 {
@@ -24,18 +84,78 @@
 
 },
 {
-    "id" : "drink",
-    "name" : "get a drink"
+"id" : "drink",
+"name" : "chill"
 
 },
 {
-    "id" : "drink",
-    "name" : "get a drink"
+"id" : "drink",
+"name" : "coffee"
 
 },
 {
-    "id" : "drink",
-    "name" : "get a drink"
+"id" : "drink",
+"name" : "hang out"
+
+},
+{
+"id" : "drink",
+"name" : "take a selfie"
+
+},
+{
+"id" : "drink",
+"name" : "museum"
+
+},
+{
+"id" : "drink",
+"name" : "pastry"
+
+},
+{
+"id" : "drink",
+"name" : "relax"
+
+},
+{
+"id" : "drink",
+"name" : "get a drink"
+
+},
+{
+"id" : "drink",
+"name" : "chill"
+
+},
+{
+"id" : "drink",
+"name" : "coffee"
+
+},
+{
+"id" : "drink",
+"name" : "hang out"
+
+},
+{
+"id" : "drink",
+"name" : "take a selfie"
+
+},
+{
+"id" : "drink",
+"name" : "museum"
+
+},
+{
+"id" : "drink",
+"name" : "pastry"
+
+},
+{
+"id" : "drink",
+"name" : "relax"
 
 }
 ]
