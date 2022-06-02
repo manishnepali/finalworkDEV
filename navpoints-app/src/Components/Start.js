@@ -21,7 +21,7 @@ export default function Start() {
              <Route exact path="/">
             <div className='bg-backimg h-screen overflow-hidden'>
                
-                <div className='container bg-white box-border h-2/3 relative top-1/2 w-screen  rounded-t-2xl items-center' >
+                <div className='container  resize-y bg-white box-border h-2/3 relative top-1/2 w-screen lg:ml-4 md:ml-4 rounded-t-2xl items-center' >
                 <ul className='flex flex-col justify-center  p-4 mx-auto'>
                      <h1 className="font-bold text-5xl">
                     Discover what’s near you.

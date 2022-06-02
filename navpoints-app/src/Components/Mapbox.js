@@ -28,7 +28,7 @@ export default function MapBox() {
 
 
   return (
-    <div className='z-0'>
+    <div className='relative'>
 
       <Map
       // 50.84238125027097, 4.3228026337517385
@@ -50,19 +50,19 @@ export default function MapBox() {
           showUserLocation={true}
           showUserHeading={true}
           position={'bottom-right'}
-           style={{backgroundColor : "green", padding: "20%"}}>location</GeolocateControl>
+          ></GeolocateControl>
         </Map>
     
-         {/* <div className='container bg-white box-border h-3/4 relative -top-3/4 w-screen  rounded-t-2xl items-center z-10' >
-                <ul className='flex flex-col justify-center  p-4 mx-auto'>
-                     <li> <Link to="/"><button class="bg-rose-700 w-1/3 text-xl text-white font-bold py-3 px-1 rounded-full mt-4 items-stretch ">
-                  go back
-                    </button></Link> </li>
+          <div className='container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
+                <ul className='flex flex-col justify-center pl-4 pt-8 pb-64  mx-auto'>
+                     <li> <Link to="/">
+                       <svg class="w-16 h-16  dark:text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
+                     </Link> </li>
                
                     </ul>
    
                     
-                </div>  */}
+                </div>  
     </div>
   
   );
