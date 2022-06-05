@@ -1,0 +1,31 @@
+[{
+    "type": "School",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [ 50.84238125027097, 4.3228026337517385]
+    },
+    "properties": {
+      "name": "erasmus hoge school campus"
+    }
+  },
+  {
+    "type": "bar",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [ 50.94238125027097, 4.3228026337517385]
+    },
+    "properties": {
+      "name": "bar"
+    }
+  },
+  {
+    "type": "Coffee",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [ 50.86238125027097, 4.3228026337517385]
+    },
+    "properties": {
+      "name": "Pinto"
+    }
+  }
+]

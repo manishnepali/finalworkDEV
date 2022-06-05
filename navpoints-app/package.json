@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "mapbox-gl": "^2.8.2",
     "react": "^18.1.0",
+    "react-cam": "^1.1.11",
     "react-dom": "^18.1.0",
     "react-map-gl": "^7.0.13",
     "react-router-dom": "^5.3.3",
