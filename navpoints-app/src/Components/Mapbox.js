@@ -1,10 +1,7 @@
 import { useState, useEffect, useCallback} from 'react';
 import "mapbox-gl/dist/mapbox-gl.css";
 import data from './data/geoData.json';
-
-
-import Map,  {FlyToInterpolator, Marker, GeolocateControl, NavigationControl, Directions} from 'react-map-gl';
-
+import Map,  {FlyToInterpolator, Marker, GeolocateControl, NavigationControl, Directions, Layer} from 'react-map-gl';
 import {
   BrowserRouter as Router,
   Switch,
@@ -70,6 +67,29 @@ const geo = data.geometry;
           showUserHeading={true}
           position={'top-left'}
           ></GeolocateControl>
+
+
+          
+           <Marker
+          longitude={4.3228026337517385}
+          latitude={50.84238125027097}>
+          erasmuserzrz
+          </Marker> 
+         
+          
+          <Marker longitude={-100} latitude={40} anchor="bottom" >
+      <img src="./pin.png" />
+    </Marker>
+         
+         {data.map(location=>(
+            <Marker 
+            key={location.id}
+            longitude={location.geometry.coordinates[1]}
+               latitude={location.geometry.coordinates[0]}>
+                <h1>TESSSSST</h1>
+              </Marker>
+         ) )} 
+         
       
           
         </Map>
@@ -82,17 +102,18 @@ const geo = data.geometry;
                </ul>
                {/* <ul className="max-h-60  overflow-auto ml-4 mr-4"> */}
                     <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
+     
                     {data.map((location, index)=>{
-                      return <li className='py-8 sm:py-8 flex row '>
+                      return <li className='py-8 sm:py-8 flex space-x-16 ml-4'>
                         <img 
                         className='w-8 h-8 rounded-full'
                         src={imgg}></img>
-                        <h1 className="font-bold truncate text-xl text-black mt-4 ml-4"
+                        <h1 className="font-bold truncate text-xl text-black mt-4 ml-4 "
                         key={index}>{location.properties.name} </h1>
                         <span id="loc" 
                         className='float-right mr-8'>
-                        <p>lat: {location.geometry.coordinates[0]}</p>
-                        <p>long: {location.geometry.coordinates[1]}</p>
+                        <p>lat: {location.geometry.coordinates[1]}</p>
+                        <p>long: {location.geometry.coordinates[0]}</p>
                         <h3>{location.type}</h3> 
                         </span></li>
                     })}

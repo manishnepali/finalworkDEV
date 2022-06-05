@@ -1,4 +1,5 @@
 [{
+  "id": 1,
     "type": "School",
     "geometry": {
       "type": "Point",
@@ -9,20 +10,22 @@
     }
   },
   {
+    "id": 2,
     "type": "bar",
     "geometry": {
       "type": "Point",
-      "coordinates": [ 50.94238125027097, 4.3228026337517385]
+      "coordinates": [ 50.84238125027097, 4.3228026337517385]
     },
     "properties": {
       "name": "bar"
     }
   },
   {
+    "id": 3,
     "type": "Coffee",
     "geometry": {
       "type": "Point",
-      "coordinates": [ 50.86238125027097, 4.3228026337517385]
+      "coordinates": [50.84238125027097, 4.3228026337517385]
     },
     "properties": {
       "name": "Pinto"
