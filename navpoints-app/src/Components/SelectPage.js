@@ -10,23 +10,32 @@ import {
 import MapBox from "./Mapbox";
   
 export default function SelectPage() {
-  const selected =[];
+  const selectedList =[];
+  const [isSelected , setSelected] = useState(false)
 // selected[0] = prompt("test");
  const backimg = "https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670";
 function changeColor(e){
+  const objSel = e.target.innerText;
+    console.log("obs:",objSel) 
   if(bgColor == false){
     e.target.style.backgroundColor = "#BF100080";
     isBgColor(true);
+    setSelected(true);
    
-   const objSel = e.target.innerText;
-   console.log("ob:",objSel) 
-   localStorage.setItem(selected, JSON.stringify(objSel));
+
+   localStorage.setItem(selectedList, JSON.stringify(objSel));
   }else if(bgColor == true){
 
     e.target.style.backgroundColor = "#ffffff";
     isBgColor(false)
-    console.log(e.target.innerText) 
+    if(isSelected == true){
+      console.log("isSelected")
+    }else{
+      console.log("not selected")
+    }
 
+    
+    localStorage.setItem(selectedList, JSON.stringify(objSel));
   }
  
   
@@ -53,7 +62,7 @@ const [bgColor, isBgColor] = useState(false);
                      In mood to:
                     </h1>
              
-                    <ul className="grid grid-cols-2 max-h-80 mt-10 overflow-y-auto ml-4 mr-4">
+                    <ul className="grid grid-cols-2 max-h-60 mt-10 overflow-y-auto ml-4 mr-4">
                     
                       {data.map((category, index)=>{
                         return <li>

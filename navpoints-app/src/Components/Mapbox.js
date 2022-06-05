@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback} from 'react';
 import "mapbox-gl/dist/mapbox-gl.css";
-import Map,  {FlyToInterpolator, Marker, GeolocateControl, NavigationControl} from 'react-map-gl';
+import Map,  {FlyToInterpolator, Marker, GeolocateControl, NavigationControl, Directions} from 'react-map-gl';
 
 import {
   BrowserRouter as Router,
@@ -41,6 +41,7 @@ export default function MapBox() {
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
       mapboxAccessToken="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
       >
+      
          <NavigationControl/>
           <GeolocateControl
           ref={geolocateControlRef}
@@ -51,6 +52,7 @@ export default function MapBox() {
           showUserHeading={true}
           position={'bottom-right'}
           ></GeolocateControl>
+          
         </Map>
     
           <div className='container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >

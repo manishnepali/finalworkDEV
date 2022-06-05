@@ -8,8 +8,8 @@ function App() {
     <div className="App">
   <Start/>
      {/* <MapBox/>
-    <Slider/>
-     <Nav/>  */}
+    <Slider/>*/}
+     <Nav/>  
     </div>
   );
 }
