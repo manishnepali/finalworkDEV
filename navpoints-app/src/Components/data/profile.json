@@ -1,0 +1,62 @@
+{
+    "name": "manish",
+    "status": "local",
+    "saved":[{ "type": "School",
+        "date": "3/3/2020",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [ 50.84238125027097, 4.3228026337517385]
+        },
+        "properties": {
+          "name": "erasmus hoge school campus"
+        }
+        },
+        { "type": "School",
+            "date": "3/3/2020",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [ 50.84238125027097, 4.3228026337517385]
+            },
+            "properties": {
+              "name": "erasmus hoge school campus"
+            }
+            },{ "type": "School",
+                "date": "3/3/2020",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [ 50.84238125027097, 4.3228026337517385]
+                },
+                "properties": {
+                  "name": "erasmus hoge school campus"
+                }
+                }],
+     "added":[{ "type": "School",
+                "date": "3/3/2020",
+                    "geometry": {
+                      "type": "Point",
+                      "coordinates": [ 50.84238125027097, 4.3228026337517385]
+                    },
+                    "properties": {
+                      "name": "erasmus hoge school campus"
+                    }
+                    },
+                    { "type": "School",
+                        "date": "3/3/2020",
+                        "geometry": {
+                          "type": "Point",
+                          "coordinates": [ 50.84238125027097, 4.3228026337517385]
+                        },
+                        "properties": {
+                          "name": "erasmus hoge school campus"
+                        }
+                        },{ "type": "School",
+                            "date": "3/3/2020",
+                            "geometry": {
+                              "type": "Point",
+                              "coordinates": [ 50.84238125027097, 4.3228026337517385]
+                            },
+                            "properties": {
+                              "name": "erasmus hoge school campus"
+                            }
+                            }]
+}

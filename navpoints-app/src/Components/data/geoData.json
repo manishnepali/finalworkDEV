@@ -14,7 +14,7 @@
     "type": "bar",
     "geometry": {
       "type": "Point",
-      "coordinates": [ 50.84238125027097, 4.3228026337517385]
+      "coordinates": [ 50.84439125027097, 4.3259026337517385]
     },
     "properties": {
       "name": "bar"
@@ -25,7 +25,7 @@
     "type": "Coffee",
     "geometry": {
       "type": "Point",
-      "coordinates": [50.84238125027097, 4.3228026337517385]
+      "coordinates": [50.84338325027097, 4.3238086337517385]
     },
     "properties": {
       "name": "Pinto"

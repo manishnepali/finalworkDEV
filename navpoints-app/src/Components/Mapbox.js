@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback} from 'react';
 import "mapbox-gl/dist/mapbox-gl.css";
 import data from './data/geoData.json';
-import Map,  {FlyToInterpolator, Marker, GeolocateControl, NavigationControl, Directions, Layer} from 'react-map-gl';
+import Map,  { Marker, GeolocateControl, NavigationControl, Directions, Layer} from 'react-map-gl';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import CameraPage from './CameraPage';
 import SelectPage from './SelectPage';
+import eye from './Icons/eye.svg'
 
 
 
@@ -36,12 +37,14 @@ const geo = data.geometry;
     zoom: 14
   });
 
-
+function test(e){
+  console.log(e.target)
+  // Map.flyTo(data[e.target.key].geometry.coordinates)
+}
   return (
     <div className='relative'>
  <Router>
             <Switch>
-             
            
              <Route exact path="/maps">
       <Map
@@ -55,6 +58,7 @@ const geo = data.geometry;
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
       mapboxAccessToken="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
     
+      
     >
       
          <NavigationControl/>
@@ -70,23 +74,17 @@ const geo = data.geometry;
 
 
           
-           <Marker
-          longitude={4.3228026337517385}
-          latitude={50.84238125027097}>
-          erasmuserzrz
-          </Marker> 
-         
-          
-          <Marker longitude={-100} latitude={40} anchor="bottom" >
-      <img src="./pin.png" />
-    </Marker>
          
          {data.map(location=>(
             <Marker 
             key={location.id}
             longitude={location.geometry.coordinates[1]}
-               latitude={location.geometry.coordinates[0]}>
-                <h1>TESSSSST</h1>
+               latitude={location.geometry.coordinates[0]}
+               scale={2}>
+                 <img 
+                        className='w-20 h-20 rounded-full bg-white'
+                        src={imgg}></img>
+                <h1 className='font-bold truncate text-l text-black'>{location.properties.name}</h1>
               </Marker>
          ) )} 
          
@@ -104,25 +102,35 @@ const geo = data.geometry;
                     <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
      
                     {data.map((location, index)=>{
-                      return <li className='py-8 sm:py-8 flex space-x-16 ml-4'>
+                      return <li className=''>
+                         <button onClick={test}
+                          class=" float-right mt-8 mr-8  bg-rose-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
+                          ><img src={eye} className=""/></button>
+                        <span className='flex flex-row py-8 sm:py-8 space-x-8 ml-4'>
+
                         <img 
-                        className='w-8 h-8 rounded-full'
+                        className='w-20 h-20 rounded-full'
                         src={imgg}></img>
+     
                         <h1 className="font-bold truncate text-xl text-black mt-4 ml-4 "
                         key={index}>{location.properties.name} </h1>
-                        <span id="loc" 
+                    </span>
+                   
+                        {/* <span id="loc" 
                         className='float-right mr-8'>
                         <p>lat: {location.geometry.coordinates[1]}</p>
                         <p>long: {location.geometry.coordinates[0]}</p>
                         <h3>{location.type}</h3> 
-                        </span></li>
+                        </span> */}
+                          </li>
                     })}
                   </ul>
                  
                <button
                style={{visibility: mapsOption}}
                class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
-             <Link exact path="/camera">    <svg viewBox="0 0 20 20"  class="w-6 h-6 inline-block">
+             <Link exact path="/camera">  
+               <svg viewBox="0 0 20 20"  class="w-6 h-6 inline-block">
             <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
                                     C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
                                     C15.952,9,16,9.447,16,10z" />

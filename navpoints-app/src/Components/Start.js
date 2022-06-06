@@ -8,6 +8,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import Journal from './Journal';
   
 export default function Start() {
   localStorage.setItem("mapsOption", false);
@@ -41,6 +42,12 @@ export default function Start() {
            
                 <Route exact path="/explore">
                 <SelectPage/>
+                </Route>
+                <Route exact path="/journal">
+                <Journal/>
+                </Route>
+                <Route exact path="/maps">
+                <MapBox/>
                 </Route>
             </Switch>
             </Router>
