@@ -8,6 +8,7 @@ import {
     Link
   } from "react-router-dom";
 import MapBox from "./Mapbox";
+import Login from "../LogIn";
   
 export default function SelectPage() {
   localStorage.setItem("mapsOption", false);
@@ -83,12 +84,13 @@ const [bgColor, isBgColor] = useState(false);
             </Route>
              
            
-                <Route exact path="/">
+                <Route exact path="/home">
                 <Start/>
                 </Route>
                 <Route exact path="/maps">
                 <MapBox/>
                 </Route>
+               
             </Switch>
             </Router>
       </div>

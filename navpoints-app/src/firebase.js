@@ -18,15 +18,13 @@ import {
 } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyBBiZk_CUjiuTHrFBlGJvIE1xUfJMW2rOo",
-    authDomain: "finalwork-navit.firebaseapp.com",
-    databaseURL: "https://finalwork-navit-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "finalwork-navit",
-    storageBucket: "finalwork-navit.appspot.com",
-    messagingSenderId: "1080716315932",
-    appId: "1:1080716315932:web:f4f764f7083f3933babed9",
-    measurementId: "G-C9WGZQYDW3"
-  };
+  apiKey: "AIzaSyB7WSPr29OlTfdNcCp0sSSp72RXGEpZp28",
+  authDomain: "navit-80963.firebaseapp.com",
+  projectId: "navit-80963",
+  storageBucket: "navit-80963.appspot.com",
+  messagingSenderId: "187689411877",
+  appId: "1:187689411877:web:9e49107402b5f0808166cc"
+};
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);

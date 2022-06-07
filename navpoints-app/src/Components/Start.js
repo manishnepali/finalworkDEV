@@ -1,6 +1,7 @@
 import { useState, useEffect} from 'react';
 import MapBox from './Mapbox';
 import SelectPage from './SelectPage'
+import Login from '../LogIn';
 
 import {
     BrowserRouter as Router,
@@ -12,6 +13,8 @@ import Journal from './Journal';
   
 export default function Start() {
   localStorage.setItem("mapsOption", false);
+  const username = localStorage.getItem("username");
+  
  const backimg = "https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670";
  
     return (
@@ -25,6 +28,7 @@ export default function Start() {
                
                 <div className='container  resize-y bg-white box-border h-2/3 relative top-1/2 w-screen lg:ml-4 md:ml-4 rounded-t-2xl items-center' >
                 <ul className='flex flex-col justify-center  p-4 mx-auto'>
+                  <p>account: {username}</p>
                      <h1 className="font-bold text-5xl">
                     Discover what’s near you.
                     </h1>
@@ -48,6 +52,9 @@ export default function Start() {
                 </Route>
                 <Route exact path="/maps">
                 <MapBox/>
+                </Route>
+                <Route exact path="/login">
+                      <Login/>
                 </Route>
             </Switch>
             </Router>

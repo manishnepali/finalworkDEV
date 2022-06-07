@@ -10,11 +10,7 @@ function App() {
   
   return (
     <div className="App">
-      <LogIn/>
-      {/* <CameraPage/> */}
-  {/* <Start/> */}
-     {/* <MapBox/>
-    <Slider/>*/}
+   <Start/> 
      <Nav/>
   
     </div>

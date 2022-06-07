@@ -4,6 +4,7 @@ import home from "./Icons/home.svg"
 import menu from "./Icons/menu-burger.svg"
 import mapmarker from "./Icons/map-marker.svg"
 import book from './Icons/book.svg'
+import userIcon from './Icons/user.svg'
 import {
   BrowserRouter as Router,
   Switch,
@@ -47,6 +48,11 @@ export default function Nav() {
                class="fixed z-30 right-4 p-4 bottom-64 w-16 h-16 bg-rose-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
                  <img src={book} className=""/>
        </button> </a>
+       <a href="/login"><button
+        style={{visibility: isClicked}}
+        class="fixed z-30 text-white right-4 p-4 mb-4 bottom-80 w-16 h-16 bg-rose-600 rounded-full">
+        <img src={userIcon} className=""/>
+       </button></a>
       
         </div>
      
