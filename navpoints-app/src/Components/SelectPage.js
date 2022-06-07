@@ -73,7 +73,7 @@ const [bgColor, isBgColor] = useState(false);
                            onClick={changeColor} key={index}>{category.name} </h1> </li>
                       })}
                     </ul>
-                    <Link to="/maps"><button class="bg-rose-600 w-2/3 ml-16 text-3xl text-white font-bold py-4 px-5 rounded-full mt-4 mb-4 items-stretch ">
+                    <Link to="/maps"><button class="bg-rose-600 w-2/3 ml-16 text-3xl text-white font-bold py-5 px-6 rounded-full my-8 items-stretch ">
                   explore
                     </button></Link>
                     
