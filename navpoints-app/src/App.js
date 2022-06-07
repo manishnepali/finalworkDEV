@@ -5,12 +5,14 @@ import Nav from './Components/Nav';
 import Slider from './Components/Slider';
 import { useState } from 'react';
 import CameraPage from './Components/CameraPage';
+import LogIn from './LogIn';
 function App() {
   
   return (
     <div className="App">
-      <CameraPage/>
-  <Start/>
+      <LogIn/>
+      {/* <CameraPage/> */}
+  {/* <Start/> */}
      {/* <MapBox/>
     <Slider/>*/}
      <Nav/>

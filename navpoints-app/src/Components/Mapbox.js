@@ -69,7 +69,7 @@ function test(e){
           showAccuracyCircle={true}
           showUserLocation={true}
           showUserHeading={true}
-          position={'top-left'}
+          position={'top-right'}
           ></GeolocateControl>
 
 
