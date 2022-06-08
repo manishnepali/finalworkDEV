@@ -11,8 +11,10 @@ import {
 import CameraPage from './CameraPage';
 import SelectPage from './SelectPage';
 import eye from './Icons/eye.svg'
-import {db, collection, getDocs, where, query} from "../firebase"
-
+import {db, collection, getDocs, where, query} from "../Backend/firebase"
+import mapboxgl from 'mapbox-gl';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 
 
@@ -31,6 +33,8 @@ const geo = data.geometry;
       // Activate as soon as the control is loaded
       ref.trigger();
     }
+    console.log(ref);
+
   }, []);
   const [viewport, setViewport] = useState({
     longitude: -122.45,
@@ -132,7 +136,7 @@ function test(e){
                {/* <ul className="max-h-60  overflow-auto ml-4 mr-4"> */}
                     <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
      
-                    {data.map((location, index)=>{
+                    {dataEvent.map((event, index)=>{
                       return <li className=''>
                          <button onClick={test}
                           class=" float-right mt-8 mr-8  bg-rose-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
@@ -141,10 +145,10 @@ function test(e){
 
                         <img 
                         className='w-20 h-20 rounded-full'
-                        src={imgg}></img>
+                        src={event.eventIcon}></img>
      
                         <h1 className="font-bold truncate text-xl text-black mt-4 ml-4 "
-                        key={index}>{location.properties.name} </h1>
+                        key={index}>{event.name} </h1>
                     </span>
                    
                         {/* <span id="loc" 
@@ -160,7 +164,7 @@ function test(e){
                <button
                style={{visibility: mapsOption}}
                class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
-             <Link exact path="/camera">  
+             <Link to="/maps/addLocation">  
                <svg viewBox="0 0 20 20"  class="w-6 h-6 inline-block">
             <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
                                     C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
@@ -173,6 +177,17 @@ function test(e){
    
                     
                 </div>  
+                </Route>
+                <Route exact path="/maps/addLocation">
+                  <div>
+                  <form class="m-4 flex">
+                      <input class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" 
+                      placeholder="name for this hotspot"/>
+                    <button class="px-8 rounded-r-lg bg-yellow-400  
+                    text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">
+                      add</button>
+                  </form>
+                  </div>
                 </Route>
                 <Route exact path="/camera">
                 <CameraPage/>

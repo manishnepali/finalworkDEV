@@ -16,12 +16,7 @@ export default function CameraPage() {
  const cam = useRef(null);
   return (
     <div className='cameraPage'>
-      <Router>
-            <Switch>
-             
-           
-             <Route exact path="/camera">
-  
+     
       <Camera
         showFocus={true}
         front={false}
@@ -35,10 +30,7 @@ export default function CameraPage() {
       />
       <button onClick={img => cam.current.capture(img)}>Take image</button>
 
-    </Route>
-
-    </Switch>
-    </Router>
+   
     </div>
   );
 };

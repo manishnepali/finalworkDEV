@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { auth, logInWithEmailAndPassword, signInWithGoogle, logout } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import logo from './Components/Icons/navitlogo.png'
-import Start from "./Components/Start";
+import logo from '../Components/Icons/navitlogo.png'
+import Start from "../Components/Start";
 import { 
   BrowserRouter as Router,
   Switch,

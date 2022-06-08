@@ -7,7 +7,7 @@ import SelectPage from './Components/SelectPage';
 import Slider from './Components/Slider';
 import { useState } from 'react';
 import CameraPage from './Components/CameraPage';
-import LogIn from './LogIn';
+import LogIn from './Backend/LogIn';
 import home from "./Components/Icons/home.svg"
 import menu from "./Components/Icons/menu-burger.svg"
 import mapmarker from "./Components/Icons/map-marker.svg"
@@ -46,13 +46,15 @@ function goToSelect(){
  }
   return (
     <div className="App">
-      <Router>
+     <Router>
         <Switch>
           <Route exact path = "/">
           <Start/> 
+
           </Route>
           <Route exact path="/explore">
                 <SelectPage/>
+                
                 </Route>
                 <Route exact path="/journal">
                 <Journal/>
@@ -107,6 +109,7 @@ function goToSelect(){
        </button></Link>
         </div>
         </Router>
+       
     </div>
     
   );

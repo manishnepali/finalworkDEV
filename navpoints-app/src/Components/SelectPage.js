@@ -8,7 +8,7 @@ import {
     Link
   } from "react-router-dom";
 import MapBox from "./Mapbox";
-import Login from "../LogIn";
+import Login from "../Backend/LogIn";
   
 export default function SelectPage() {
   localStorage.setItem("mapsOption", false);
