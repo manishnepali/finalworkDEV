@@ -11,7 +11,14 @@ import {
 import CameraPage from './CameraPage';
 import SelectPage from './SelectPage';
 import eye from './Icons/eye.svg'
-import {db, collection, getDocs, where, query} from "../Backend/firebase"
+import {db, 
+  collection,
+   getDocs,
+    where, 
+    query, 
+    setDoc,
+     addDoc,
+    doc} from "../Backend/firebase"
 import mapboxgl from 'mapbox-gl';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
@@ -64,6 +71,13 @@ const geo = data.geometry;
 function test(e){
   console.log(e.target)
   // Map.flyTo(data[e.target.key].geometry.coordinates)
+}
+const [newEvent, setNewEvent] = useState([])
+const addEventLoc= async (e)=>{
+  e.preventDefault();
+  const docRef = doc(db, "new_events", "002");
+  const payload = {test : "a new event"}
+  await setDoc(docRef, payload)
 }
   return (
     <div className='relative'>
@@ -183,8 +197,18 @@ function test(e){
                   <form class="m-4 flex">
                       <input class="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" 
                       placeholder="name for this hotspot"/>
-                    <button class="px-8 rounded-r-lg bg-yellow-400  
+                    <button 
+                    onClick={addEventLoc}
+                    class="px-8 rounded-r-lg bg-yellow-400  
                     text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">
+                       <select >
+                       <option>drink</option>
+                       <option>relax</option>
+                       <option>snacks</option>
+                       <option>sport</option>
+                       <option>coffee</option>
+                       <option>museam</option>
+                        </select>
                       add</button>
                   </form>
                   </div>

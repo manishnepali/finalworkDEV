@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7ccdec12.css",
-    "main.js": "/static/js/main.f68f9f6f.js",
+    "main.js": "/static/js/main.b392ebbc.js",
     "static/js/787.a5d9bb18.chunk.js": "/static/js/787.a5d9bb18.chunk.js",
     "static/js/mapbox-gl-csp-worker.d1c5794b.worker.js": "/static/js/mapbox-gl-csp-worker.d1c5794b.worker.js",
     "static/media/navitlogo.png": "/static/media/navitlogo.2a69765c18993d247855.png",
@@ -13,11 +13,11 @@
     "index.html": "/index.html",
     "static/media/user.svg": "/static/media/user.af38d489b2ad3fa43a215803679c46d7.svg",
     "main.7ccdec12.css.map": "/static/css/main.7ccdec12.css.map",
-    "main.f68f9f6f.js.map": "/static/js/main.f68f9f6f.js.map",
+    "main.b392ebbc.js.map": "/static/js/main.b392ebbc.js.map",
     "787.a5d9bb18.chunk.js.map": "/static/js/787.a5d9bb18.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7ccdec12.css",
-    "static/js/main.f68f9f6f.js"
+    "static/js/main.b392ebbc.js"
   ]
 }

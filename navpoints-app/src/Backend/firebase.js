@@ -15,6 +15,8 @@ import {
   collection,
   where,
   addDoc,
+  setDoc,
+  doc
 } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -96,4 +98,6 @@ export {
   registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
+  setDoc,
+  doc
 };
