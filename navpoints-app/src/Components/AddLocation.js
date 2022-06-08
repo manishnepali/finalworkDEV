@@ -58,6 +58,9 @@ export default function AddLocation() {
 const [newEvent, setNewEvent] = useState([])
 const addEventLoc= async (e)=>{
   e.preventDefault();
+  const select = document.getElementById("selcat");
+  const selectedCategory = select.options[select.selectedIndex].value;
+  console.log(selectedCategory);
   const newPlaceName = document.getElementById("newPlace").value;
   const newPlaceId = document.getElementById("newId").value;
   console.log(newPlaceName);
@@ -66,10 +69,11 @@ const addEventLoc= async (e)=>{
                     geometry:{
                       _long: longitude,
                       _lat: latitude
-                    }}
+                    },
+                  eventIcon:selectedCategory }
   await setDoc(docRef, payload);
   alert("done");
-  window.location('/explore')
+  
 }
   return (
     <div className=''>
@@ -96,7 +100,8 @@ const addEventLoc= async (e)=>{
                       placeholder="name for this hotspot"/>
                       
                       <h1 className='font-bold text-xl'>choose a catagory</h1>
-                      <select className="my-4 font-bold text-xl p-4 border-black border">
+                      <select id="selcat"
+                      className="my-4 font-bold text-xl p-4 border-black border">
                         {data.map((category, index) => {
                         return  <option key={index} value={category.img} >{category.name}</option>
                         })}
