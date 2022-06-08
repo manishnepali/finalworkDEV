@@ -41,13 +41,15 @@ const addEventLoc= async (e)=>{
   const newPlaceName = document.getElementById("newPlace").value;
   const newPlaceId = document.getElementById("newId").value;
   console.log(newPlaceName);
- const docRef = doc(db, "new_events", newPlaceId);
+ const docRef = doc(db, "geo_location", newPlaceId);
   const payload = {name : newPlaceName,
                     geometry:{
                       _long: longitude,
                       _lat: latitude
                     }}
-  await setDoc(docRef, payload)
+  await setDoc(docRef, payload);
+  alert("done");
+  window.location('/explore')
 }
   return (
     <div className=''>
