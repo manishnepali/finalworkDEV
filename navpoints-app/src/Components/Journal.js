@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react';
+import {db, collection, getDocs, where, query} from "../firebase"
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,11 +7,29 @@ import {
     Link
   } from "react-router-dom";
 import data from './data/profile.json';
-
+import { Firestore } from 'firebase/firestore';
+import { async } from '@firebase/util';
 
 
 function Journal() {
   const profile = "https://i.ibb.co/8KypTMS/wxnish.png"
+  const [data, setData] = useState([]);
+
+  
+  //get data from fiebase
+  const getData = async() =>{
+    const q = query(collection(db, "event_category"));
+
+    const querySnapshot = await getDocs(q);
+    const dataSet = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id
+    }));
+    console.log(dataSet)
+  } 
+  useEffect(()=>{
+    getData();
+  },[])
 
   
     return (

@@ -9,16 +9,21 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  NavLink
 } from "react-router-dom";
+import SelectPage from './SelectPage';
+
 export default function Nav() {
+
  const [isClicked, setClicked] = useState('hidden');
   const account = Boolean(localStorage.getItem("loggedIn"));
  const [logged, setLogged] = useState(account);
 
-
  
+function goToSelect(){
 
+}
 
 
  function menuOpen(){
@@ -30,18 +35,20 @@ export default function Nav() {
  }
     return (
       <div id="nav" className=''>
-       
         <button
         onClick={menuOpen}
                 class="fixed z-30 right-4 p-4 bottom-4 w-16 h-16 bg-rose-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
                   <img src={menu} className=""/>
         </button>
         
-          <a href='/explore'><button
+        <Link to="/journal">
+             <button
+          
                style={{visibility: isClicked}}
-               class="fixed z-30 right-4 p-4 bottom-24 w-16 h-16 bg-rose-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+               class="fixed z-30 right-4 p-4 bottom-24 w-16 h-16 bg-rose-600 rounded-full transition ease-in duration-200 focus:outline-none"> 
                  <img src={home} className=""/>
-       </button> </a> 
+       </button>  </Link>
+  
        <a href='/maps'><button
                style={{visibility: isClicked}}
                class="fixed z-30 right-4 p-4 bottom-44 w-16 h-16 bg-rose-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
@@ -66,7 +73,6 @@ export default function Nav() {
         class="fixed z-30 text-white right-4 p-4 mb-4 bottom-80 w-16 h-16 bg-rose-600 rounded-full">
         <img src={userIcon} className=""/>
        </button></a>
-      
         </div>
      
     );

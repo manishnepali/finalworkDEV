@@ -20,6 +20,7 @@ import {
 const firebaseConfig = {
   apiKey: "AIzaSyB7WSPr29OlTfdNcCp0sSSp72RXGEpZp28",
   authDomain: "navit-80963.firebaseapp.com",
+  databaseURL: "https://navit-80963-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "navit-80963",
   storageBucket: "navit-80963.appspot.com",
   messagingSenderId: "187689411877",
@@ -85,7 +86,11 @@ const logout = () => {
 };
 export {
   auth,
+  query,
   db,
+  getDocs,
+  where,
+  collection,
   signInWithGoogle,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
