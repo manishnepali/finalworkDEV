@@ -19,6 +19,7 @@ import {
   Route,
   Link,
   useHistory } from "react-router-dom";
+import AddLocation from './Components/AddLocation';
 
 function App() {
   const [isClicked, setClicked] = useState('hidden');
@@ -64,6 +65,9 @@ function goToSelect(){
                 </Route>
                 <Route exact path="/login">
                       <LogIn/>
+                </Route>
+                <Route exact path="/addLocation">
+                  <AddLocation/>
                 </Route>
         </Switch>
      
