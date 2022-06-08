@@ -21,8 +21,17 @@ import MapBox from './Mapbox';
 
 export default function AddLocation() {     
   const [dataEvent, setDataEvent] = useState([]);
-
+ const [latitude, setLattitude] = useState([]);
+ const [longitude, setLongituude] = useState([])
   useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLattitude(position.coords.latitude);
+      setLongituude(position.coords.longitude);
+      localStorage.setItem("uses_lat", latitude);
+      localStorage.setItem('user_long', longitude);
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
   },[])
 
 
@@ -33,7 +42,11 @@ const addEventLoc= async (e)=>{
   const newPlaceId = document.getElementById("newId").value;
   console.log(newPlaceName);
  const docRef = doc(db, "new_events", newPlaceId);
-  const payload = {name : newPlaceName}
+  const payload = {name : newPlaceName,
+                    geometry:{
+                      _long: longitude,
+                      _lat: latitude
+                    }}
   await setDoc(docRef, payload)
 }
   return (
