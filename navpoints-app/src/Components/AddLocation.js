@@ -23,6 +23,23 @@ export default function AddLocation() {
   const [dataEvent, setDataEvent] = useState([]);
  const [latitude, setLattitude] = useState([]);
  const [longitude, setLongituude] = useState([])
+ const [data, setData] = useState([]);
+
+
+ //get data from fiebase
+ const getData = async() =>{
+   const q = query(collection(db, "event_category"));
+
+   const querySnapshot = await getDocs(q);
+   const dataSet = querySnapshot.docs.map((doc) => ({
+     ...doc.data(),
+     id: doc.id
+   }));
+   setData(dataSet);
+   console.log(dataSet)
+ } 
+ 
+
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(function(position) {
       setLattitude(position.coords.latitude);
@@ -31,7 +48,10 @@ export default function AddLocation() {
       localStorage.setItem('user_long', longitude);
       console.log("Latitude is :", position.coords.latitude);
       console.log("Longitude is :", position.coords.longitude);
-    });
+    }
+    );
+    getData();
+    console.log("event catagory",data);
   },[])
 
 
@@ -58,8 +78,13 @@ const addEventLoc= async (e)=>{
            
              
                 <Route exact path="/addLocation">
+                
                     <div 
                     className='w-4/5 h-3/4 top-1/4 flex flex-col ml-12 p-12  mt-32'>
+                        
+
+                
+
                         <label className='font-bold text-5xl'> add a new location:</label>
                         <input
                     id="newId"
@@ -71,15 +96,11 @@ const addEventLoc= async (e)=>{
                       placeholder="name for this hotspot"/>
                       
                       <h1 className='font-bold text-xl'>choose a catagory</h1>
-                    <select class="my-4 font-bold text-xl p-4 border-black border" >
-                       <option>drink</option>
-                       <option>relax</option>
-                       <option>snacks</option>
-                       <option>sport</option>
-                       <option>coffee</option>
-                       <option>museam</option>
-                        </select>
-
+                      <select className="my-4 font-bold text-xl p-4 border-black border">
+                        {data.map((category, index) => {
+                        return  <option key={index} value={category.img} >{category.name}</option>
+                        })}
+                          </select>
                         <button 
                     onClick={addEventLoc}
                     class="px-8 rounded-lg bg-rose-400  

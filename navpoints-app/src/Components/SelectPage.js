@@ -84,7 +84,7 @@ const [bgColor, isBgColor] = useState(false);
             </Route>
              
            
-                <Route exact path="/home">
+                <Route exact path="/">
                 <Start/>
                 </Route>
                 <Route exact path="/maps">

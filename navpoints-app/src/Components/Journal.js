@@ -51,9 +51,6 @@ function Journal() {
                
               
                     <h1 className="font-bold text-5xl ml-4">
-                   <img 
-                   className='w-12'
-                   src={data[0].museum}/>
                    </h1>
             
                    {/* <ul className="grid grid-cols-2 max-h-60 mt-10 overflow-y-auto ml-4 mr-4">
