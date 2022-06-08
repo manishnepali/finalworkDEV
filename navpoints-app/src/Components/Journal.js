@@ -15,7 +15,7 @@ function Journal() {
   const profile = "https://i.ibb.co/8KypTMS/wxnish.png"
   const [data, setData] = useState([]);
 
-  
+
   //get data from fiebase
   const getData = async() =>{
     const q = query(collection(db, "event_category"));
@@ -25,10 +25,12 @@ function Journal() {
       ...doc.data(),
       id: doc.id
     }));
+    setData(dataSet);
     console.log(dataSet)
   } 
   useEffect(()=>{
     getData();
+    console.log("event catagory",data)
   },[])
 
   
@@ -49,7 +51,9 @@ function Journal() {
                
               
                     <h1 className="font-bold text-5xl ml-4">
-                    journal is loaded
+                   <img 
+                   className='w-12'
+                   src={data[0].cofffee}/>
                    </h1>
             
                    {/* <ul className="grid grid-cols-2 max-h-60 mt-10 overflow-y-auto ml-4 mr-4">

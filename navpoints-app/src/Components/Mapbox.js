@@ -11,6 +11,7 @@ import {
 import CameraPage from './CameraPage';
 import SelectPage from './SelectPage';
 import eye from './Icons/eye.svg'
+import {db, collection, getDocs, where, query} from "../firebase"
 
 
 
@@ -36,6 +37,25 @@ const geo = data.geometry;
     latitude: 37.78,
     zoom: 14
   });
+  const [dataEvent, setDataEvent] = useState([]);
+
+
+  //get data from fiebase
+  const getData = async() =>{
+    const q = query(collection(db, "geo_location"));
+
+    const querySnapshot = await getDocs(q);
+    const dataSet = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id
+    }));
+    setDataEvent(dataSet);
+    console.log(dataSet)
+  } 
+  useEffect(()=>{
+    getData();
+    console.log("event catagory",dataEvent)
+  },[])
 
 function test(e){
   console.log(e.target)
@@ -73,9 +93,20 @@ function test(e){
           ></GeolocateControl>
 
 
-          
+{dataEvent.map(event=>(
+            <Marker 
+            key={event.id}
+            longitude={event.geometry._long}
+               latitude={event.geometry._lat}
+               scale={2}>
+                 <img 
+                        className='w-20 h-20 rounded-full bg-black'
+                        src={event.eventIcon}></img>
+                <h1 className='font-medium truncate text-xl text-black'>{event.name}</h1>
+              </Marker>
+         ) )} 
          
-         {data.map(location=>(
+         {/* {data.map(location=>(
             <Marker 
             key={location.id}
             longitude={location.geometry.coordinates[1]}
@@ -86,7 +117,7 @@ function test(e){
                         src={imgg}></img>
                 <h1 className='font-bold truncate text-l text-black'>{location.properties.name}</h1>
               </Marker>
-         ) )} 
+         ) )}  */}
          
       
           
