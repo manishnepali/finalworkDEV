@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.370ec01a.css",
-    "main.js": "/static/js/main.f377887a.js",
+    "main.css": "/static/css/main.f65f8f86.css",
+    "main.js": "/static/js/main.1858a6f1.js",
     "static/js/787.a5d9bb18.chunk.js": "/static/js/787.a5d9bb18.chunk.js",
     "static/js/mapbox-gl-csp-worker.d1c5794b.worker.js": "/static/js/mapbox-gl-csp-worker.d1c5794b.worker.js",
     "static/media/navitlogo.png": "/static/media/navitlogo.2a69765c18993d247855.png",
@@ -12,12 +12,12 @@
     "static/media/menu-burger.svg": "/static/media/menu-burger.d521f4976147dca7a8bbdf47a7f6818b.svg",
     "index.html": "/index.html",
     "static/media/user.svg": "/static/media/user.af38d489b2ad3fa43a215803679c46d7.svg",
-    "main.370ec01a.css.map": "/static/css/main.370ec01a.css.map",
-    "main.f377887a.js.map": "/static/js/main.f377887a.js.map",
+    "main.f65f8f86.css.map": "/static/css/main.f65f8f86.css.map",
+    "main.1858a6f1.js.map": "/static/js/main.1858a6f1.js.map",
     "787.a5d9bb18.chunk.js.map": "/static/js/787.a5d9bb18.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.370ec01a.css",
-    "static/js/main.f377887a.js"
+    "static/css/main.f65f8f86.css",
+    "static/js/main.1858a6f1.js"
   ]
 }

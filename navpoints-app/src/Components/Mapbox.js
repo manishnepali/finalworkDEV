@@ -46,13 +46,15 @@ const geo = data.geometry;
     console.log(ref);
 
   }, []);
+ 
+  const [dataEvent, setDataEvent] = useState([]);
+  const [userLattitude, setLattitude] = useState(4.3228026337517385);
+  const [userLongitude, setLongituude] = useState(50.84238125027097);
   const [viewport, setViewport] = useState({
-    longitude: -122.45,
-    latitude: 37.78,
+    longitude: userLattitude,
+    latitude: userLongitude,
     zoom: 14
   });
-  const [dataEvent, setDataEvent] = useState([]);
-
 
   //get data from fiebase
   const getData = async() =>{
@@ -67,6 +69,17 @@ const geo = data.geometry;
     console.log(dataSet)
   } 
   useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(function(position) {
+      setLattitude(position.coords.longitude);
+      setLongituude(position.coords.latitude);
+      setViewport({
+        longitude: position.coords.latitude,
+        latitude: position.coords.longitude,
+        zoom: 14
+      })
+    console.log("cor loc:", userLattitude, userLongitude, viewport);
+    }
+    );
     getData();
     console.log("event catagory",dataEvent)
   },[])
@@ -79,12 +92,15 @@ function goToDetail(e){
   const toGetDetail = e.target.id;
   sessionStorage.setItem("detailQuery", toGetDetail);
   setDq(toGetDetail)
-
+  
   setDetailPage(true)
+  
  
   // Map.flyTo(data[e.target.key].geometry.coordinates)
 }
+function setWaypoint(){
 
+}
 function goBackToMap(){
 setDetailPage(false);
 }
@@ -104,11 +120,7 @@ const addEventLoc= async (e)=>{
              <Route exact path="/maps">
       <Map
       // 50.84238125027097, 4.3228026337517385
-      initialViewState={{
-        longitude: 4.3228026337517385,
-        latitude: 50.84238125027097,
-        zoom: 16
-      }}
+      initialViewState={viewport}
       style={{width: '100vw', height: '60vh'}}
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
       mapboxAccessToken="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
