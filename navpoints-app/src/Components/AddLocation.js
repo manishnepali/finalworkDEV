@@ -74,8 +74,13 @@ const addEventLoc= async (e)=>{
                   eventIcon: selectedCategory,
                 creator: username,
               categoryName: selectedCategoryname }
+if(longitude == "" && latitude == ""){
+alert("set your location on to perform this action")
+}else{
   await setDoc(docRef, payload);
   alert("done");
+}
+ 
   
 }
   return (
