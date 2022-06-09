@@ -25,7 +25,7 @@ export default function AddLocation() {
  const [longitude, setLongituude] = useState([])
  const [data, setData] = useState([]);
 
-
+const username = localStorage.getItem("username");
  //get data from fiebase
  const getData = async() =>{
    const q = query(collection(db, "event_category"));
@@ -70,7 +70,8 @@ const addEventLoc= async (e)=>{
                       _long: longitude,
                       _lat: latitude
                     },
-                  eventIcon:selectedCategory }
+                  eventIcon: selectedCategory,
+                creator: username }
   await setDoc(docRef, payload);
   alert("done");
   

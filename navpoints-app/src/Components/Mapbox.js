@@ -205,7 +205,9 @@ const addEventLoc= async (e)=>{
                                     </path></svg>
                               </li>
                             </ul>
-                            <div id="detailContainer">
+                            <div id="detailContainer"
+                            className='basis-0 grow p-6 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
+
                               <h1
                               className="font-bold text-2xl mt-4 ml-8">
                                   {dataEvent[dq].name}
@@ -214,6 +216,7 @@ const addEventLoc= async (e)=>{
                                 className='w-16 ml-8 mt-8'
                                   src={dataEvent[dq].eventIcon}
                                   />
+                                  <p className='font-bold text-gray-500 text-lg p-4 mb-6 md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
                               <button 
                               onClick={setWaypoint}
                               class="bg-rose-600 w-2/3 ml-16 text-l 
@@ -223,7 +226,8 @@ const addEventLoc= async (e)=>{
                                 </button>
                                 </div>
                         </div>:
-                         <div id="eventList">   
+                         <div id="eventList"
+                         className=''>   
                            
                            
                             <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
@@ -238,7 +242,7 @@ const addEventLoc= async (e)=>{
                                           </path></svg></Link>
                                   </li>
                             </ul>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto mx-8'>
      
                                     {dataEvent.map((event, index)=>{
                                       return <li className=''>
@@ -257,8 +261,8 @@ const addEventLoc= async (e)=>{
                                         className='w-20 h-20 rounded-full'
                                         src={event.eventIcon}></img>
 
-                                        <h1 className="font-bold truncate text-xl text-black mt-4 ml-4 "
-                                        key={index}>{index} {event.name}  </h1>
+                                        <h1 className="font-bold  text-xl text-black mt-4 mx-8 "
+                                        key={index}> {event.name}  </h1>
                                     </span>
                                     
                                         {/* <span id="loc" 
