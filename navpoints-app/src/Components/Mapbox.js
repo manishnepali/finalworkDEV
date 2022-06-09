@@ -134,10 +134,14 @@ const addEventLoc= async (e)=>{
             longitude={event.geometry._long}
                latitude={event.geometry._lat}
                scale={2}>
+                 <div
+                 className="flex flex-col items-center w-20 h-20">
                  <img 
-                        className='w-20 h-20 rounded-full bg-black'
+                        className='w-8 h-8 rounded-full bg-black'
                         src={event.eventIcon}></img>
-                <h1 className='font-medium truncate text-xl text-black'>{event.name}</h1>
+                        
+                <h1 className='font-medium  text-l text-black '>{event.name}</h1>
+                </div>
               </Marker>
          ) )} 
          
