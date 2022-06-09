@@ -89,7 +89,8 @@ const geo = data.geometry;
   },[])
 const [detailPage, setDetailPage] = useState(false);
 const [dq, setDq] = useState() ;
-
+const filterQuery = sessionStorage.getItem("filterQuery");
+console.log(filterQuery);
 function goToDetail(e){
    
   console.log(e.target.id)
@@ -168,18 +169,7 @@ const addEventLoc= async (e)=>{
               </Marker>
          ) )} 
          
-         {/* {data.map(location=>(
-            <Marker 
-            key={location.id}
-            longitude={location.geometry.coordinates[1]}
-               latitude={location.geometry.coordinates[0]}
-               scale={2}>
-                 <img 
-                        className='w-20 h-20 rounded-full bg-white'
-                        src={imgg}></img>
-                <h1 className='font-bold truncate text-l text-black'>{location.properties.name}</h1>
-              </Marker>
-         ) )}  */}
+      
          
       
           
@@ -187,7 +177,6 @@ const addEventLoc= async (e)=>{
     
           <div className='z-20 container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
             
-               {/* <ul className="max-h-60  overflow-auto ml-4 mr-4"> */}
    
                     {
                       detailPage ? 
@@ -245,6 +234,7 @@ const addEventLoc= async (e)=>{
                              <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto mx-8'>
      
                                     {dataEvent.map((event, index)=>{
+                                    if(filterQuery == event.categoryName){
                                       return <li className=''>
                                           <button onClick={goToDetail}
                                           
@@ -271,22 +261,22 @@ const addEventLoc= async (e)=>{
                                         <p>long: {location.geometry.coordinates[0]}</p>
                                         <h3>{location.type}</h3> 
                                         </span> */}
-                                          </li>
+                                          </li>}
                                       })}
                               </ul>
                             </div>
                     }
-
+                 <Link to="/addLocation">  
                <button
                style={{visibility: mapsOption}}
                class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
-             <Link to="/addLocation">  
+            
                <svg viewBox="0 0 20 20"  class="w-6 h-6 inline-block">
             <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
                                     C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
                                     C15.952,9,16,9.447,16,10z" />
-          </svg>  </Link>
-       </button>
+          </svg>  
+       </button></Link>
       
               
                    

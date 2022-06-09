@@ -60,6 +60,7 @@ const addEventLoc= async (e)=>{
   e.preventDefault();
   const select = document.getElementById("selcat");
   const selectedCategory = select.options[select.selectedIndex].value;
+  const selectedCategoryname = select.options[select.selectedIndex].text;
   console.log(selectedCategory);
   const newPlaceName = document.getElementById("newPlace").value;
   const newPlaceId = document.getElementById("newId").value;
@@ -71,7 +72,8 @@ const addEventLoc= async (e)=>{
                       _lat: latitude
                     },
                   eventIcon: selectedCategory,
-                creator: username }
+                creator: username,
+              categoryName: selectedCategoryname }
   await setDoc(docRef, payload);
   alert("done");
   

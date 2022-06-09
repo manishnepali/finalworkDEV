@@ -72,7 +72,11 @@ const options = data.map((item, index)=>{
                 
               });
  
-
+function getSeleectedCategory(e){
+  const selected = e.target.value;
+  console.log(selected);
+  sessionStorage.setItem("filterQuery", selected);
+}
 
 
 
@@ -113,7 +117,7 @@ const [bgColor, isBgColor] = useState(false);
                       {data.map((category, index)=>{
                         return <li className="p-4">
                           <input 
-                          onClick={changeColor}
+                          onChange={getSeleectedCategory}
                           className="h-8 w-8 border border-gray-300 bg-white checked:bg-blue-600 
                           checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2"
                           type="radio" id={category.id} name="filter" value={category.name}/>
@@ -129,10 +133,13 @@ const [bgColor, isBgColor] = useState(false);
                        </li>
                       })} 
                     </ul>
-                    <Link to="/maps"><button class="bg-rose-600 w-2/3 ml-16 text-3xl text-white font-bold py-5 px-6 rounded-full mt-8 items-stretch ">
+              <Link to="/maps">
+                      <button 
+                      
+                      className="bg-rose-600 w-2/3 ml-16 text-3xl text-white font-bold py-5 px-6 rounded-full mt-8 items-stretch ">
                   explore
-                    </button></Link>
-                    
+                    </button>
+                    </Link>
                 </div>
                 
             </div>       

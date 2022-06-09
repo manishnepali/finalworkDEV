@@ -71,7 +71,6 @@ function goToSelect(){
                 </Route>
         </Switch>
      
-
       <div id="nav" className=''>
         <button
         onClick={menuOpen}
@@ -111,7 +110,7 @@ function goToSelect(){
         class="fixed z-30 text-white right-4 p-4 mb-4 bottom-80 w-16 h-16 bg-rose-600 rounded-full">
         <img src={userIcon} className=""/>
        </button></Link>
-        </div>
+        </div> 
         </Router>
        
     </div>
