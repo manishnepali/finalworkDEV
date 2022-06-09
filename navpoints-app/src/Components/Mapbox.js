@@ -70,11 +70,25 @@ const geo = data.geometry;
     getData();
     console.log("event catagory",dataEvent)
   },[])
+const [detailPage, setDetailPage] = useState(false);
+const [dq, setDq] = useState() ;
 
-function test(e){
-  console.log(e.target)
+function goToDetail(e){
+   
+  console.log(e.target.id)
+  const toGetDetail = e.target.id;
+  sessionStorage.setItem("detailQuery", toGetDetail);
+  setDq(toGetDetail)
+
+  setDetailPage(true)
+ 
   // Map.flyTo(data[e.target.key].geometry.coordinates)
 }
+
+function goBackToMap(){
+setDetailPage(false);
+}
+
 const [newEvent, setNewEvent] = useState([])
 const addEventLoc= async (e)=>{
   e.preventDefault();
@@ -145,39 +159,93 @@ const addEventLoc= async (e)=>{
         </Map>
     
           <div className='z-20 container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
-                <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
-                     <li> <Link to="/explore">
-                       <svg class="w-16 h-16  dark:text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
-                     </Link> </li>
-               </ul>
+            
                {/* <ul className="max-h-60  overflow-auto ml-4 mr-4"> */}
-                    <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
+   
+                    {
+                      detailPage ? 
+                      <div id="eventDetail">
+                            <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
+                            <li> 
+                              <svg 
+                                onClick={goBackToMap}
+                              class="w-16 h-16  dark:text-rose-600" 
+                              fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+                              xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round"
+                                  stroke-linejoin="round" stroke-width="2"
+                                  d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z">
+                                    </path></svg>
+                              </li>
+                            </ul>
+                            <div id="detailContainer">
+                              <h1
+                              className="font-bold text-2xl mt-4 ml-8">
+                                  {dataEvent[dq].name}
+                                </h1>
+                                <img
+                                className='w-16 ml-8 mt-8'
+                                  src={dataEvent[dq].eventIcon}
+                                  />
+                              <button 
+                              
+                              class="bg-rose-600 w-2/3 ml-16 text-l 
+                                text-white font-bold py-2 px-3
+                                rounded-full mt-4">
+                                set waypoint
+                                </button>
+                                </div>
+                        </div>:
+                         <div id="eventList">   
+                           
+                           
+                            <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
+                                  <li> <Link to="/explore">
+                                    <svg 
+                                    class="w-16 h-16  dark:text-rose-600"
+                                      fill="none" stroke="currentColor" 
+                                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" 
+                                        stroke-width="2"
+                                        d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z">
+                                          </path></svg></Link>
+                                  </li>
+                            </ul>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
      
-                    {dataEvent.map((event, index)=>{
-                      return <li className=''>
-                         <button onClick={test}
-                          class=" float-right mt-8 mr-8  bg-rose-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
-                          ><img src={eye} className=""/></button>
-                        <span className='flex flex-row py-8 sm:py-8 space-x-8 ml-4'>
+                                    {dataEvent.map((event, index)=>{
+                                      return <li className=''>
+                                          <button onClick={goToDetail}
+                                          
+                                          class=" float-right mt-8 mr-8  bg-rose-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
+                                          >
+                                            <img 
+                                          onClick={goToDetail}
+                                          id={index}
+                                          src={eye} className=""/></button>
+                                        <span className='flex flex-row py-8 sm:py-8 space-x-8 ml-4'>
 
-                        <img 
-                        className='w-20 h-20 rounded-full'
-                        src={event.eventIcon}></img>
-     
-                        <h1 className="font-bold truncate text-xl text-black mt-4 ml-4 "
-                        key={index}>{event.name} </h1>
-                    </span>
-                   
-                        {/* <span id="loc" 
-                        className='float-right mr-8'>
-                        <p>lat: {location.geometry.coordinates[1]}</p>
-                        <p>long: {location.geometry.coordinates[0]}</p>
-                        <h3>{location.type}</h3> 
-                        </span> */}
-                          </li>
-                    })}
-                  </ul>
-                 
+                                        <img 
+                                        
+                                        className='w-20 h-20 rounded-full'
+                                        src={event.eventIcon}></img>
+
+                                        <h1 className="font-bold truncate text-xl text-black mt-4 ml-4 "
+                                        key={index}>{index} {event.name}  </h1>
+                                    </span>
+                                    
+                                        {/* <span id="loc" 
+                                        className='float-right mr-8'>
+                                        <p>lat: {location.geometry.coordinates[1]}</p>
+                                        <p>long: {location.geometry.coordinates[0]}</p>
+                                        <h3>{location.type}</h3> 
+                                        </span> */}
+                                          </li>
+                                      })}
+                              </ul>
+                            </div>
+                    }
+
                <button
                style={{visibility: mapsOption}}
                class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">

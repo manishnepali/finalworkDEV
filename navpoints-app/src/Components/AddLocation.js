@@ -109,9 +109,15 @@ const addEventLoc= async (e)=>{
                         <button 
                     onClick={addEventLoc}
                     class="px-8 rounded-lg bg-rose-400  
-                    text-white font-bold p-4 uppercase my-4">
+                    text-white font-bold p-4  my-4">
                        
                       add</button>
+
+                     <Link to="/maps"><button 
+                    class="px-4 rounded-lg bg-rose-400  
+                    text-white font-bold p-4  my-4">
+                       
+                      go back</button></Link> 
                     </div>
                     
                   
