@@ -1,7 +1,11 @@
 import { useState, useEffect, useCallback} from 'react';
 import "mapbox-gl/dist/mapbox-gl.css";
 import data from './data/geoData.json';
-import Map,  { Marker, GeolocateControl, NavigationControl, Directions, Layer} from 'react-map-gl';
+import Map,  { Marker, 
+  GeolocateControl,
+   NavigationControl, 
+   Layer
+} from 'react-map-gl';
 import {
   BrowserRouter as Router,
   Switch,
@@ -99,7 +103,14 @@ function goToDetail(e){
   // Map.flyTo(data[e.target.key].geometry.coordinates)
 }
 function setWaypoint(){
-
+  const lattDetail = dataEvent[dq].geometry._lat;
+  const longDetail = dataEvent[dq].geometry._long;
+  console.log(lattDetail, longDetail);
+  setViewport({
+    longitude: longDetail,
+    latitude: lattDetail,
+    zoom: 14
+  })
 }
 function goBackToMap(){
 setDetailPage(false);
@@ -204,7 +215,7 @@ const addEventLoc= async (e)=>{
                                   src={dataEvent[dq].eventIcon}
                                   />
                               <button 
-                              
+                              onClick={setWaypoint}
                               class="bg-rose-600 w-2/3 ml-16 text-l 
                                 text-white font-bold py-2 px-3
                                 rounded-full mt-4">

@@ -14,9 +14,11 @@ import Journal from './Journal';
 export default function Start() {
   localStorage.setItem("mapsOption", false);
   const logged = localStorage.getItem("logged");
+  const loggedIn = localStorage.getItem("loggedIn")
+  const [exButton, setExButton] = useState(Boolean(loggedIn));
+  console.log(exButton);
  
  const backimg = "https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670";
- 
     return (
         <div className="">
             <Router>
@@ -33,9 +35,14 @@ export default function Start() {
                      <h1 className="font-bold text-5xl">
                     Discover what’s near you.
                     </h1>
-                   <li> <Link to="/explore"><button class="bg-rose-600 w-2/3 ml-16 text-3xl text-white font-bold py-3 px-5 rounded-full mt-4 items-stretch ">
-                  let's start 
-                    </button></Link> </li>
+                    {exButton ?
+                     <li> <Link to="/explore"><button class="bg-rose-600 w-2/3 ml-16 text-3xl text-white font-bold py-3 px-5 rounded-full mt-4 items-stretch ">
+                     let's start 
+                       </button></Link> </li>:
+                        <li> <Link to="/login"><button class="bg-rose-600 w-2/3 ml-16 text-xl text-white font-bold py-3 px-5 rounded-full mt-4 items-stretch ">
+                        log in with google
+                          </button></Link> </li> }
+                  
                     </ul>
    
                     

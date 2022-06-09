@@ -52,9 +52,9 @@ function Login() {
     className="flex ">
        
        
-        <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-8 mx-8 p-8">
+        <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-36 p-20">
         <img 
-        className="w-3/4 ml-10"
+        className="w-36 ml-10"
         src={logo}/>
        
         { isLoggedIn ?
@@ -74,10 +74,18 @@ function Login() {
         {user.email}
 
         </h1>
+        <Link to="/explore">
         <button 
         className="text-white bg-rose-600
 
         text-2xl  font-bold py-3 px-5 rounded-full mt-4 "
+        >lets start</button>
+        </Link>
+        <br/>
+        <button 
+        className="text-white bg-rose-500
+
+        text-xl  font-bold py-1 px-2 rounded-full mt-4 "
         onClick={signOut}>Log out</button> </div> : 
         <div>
            <button className="text-white bg-rose-600
