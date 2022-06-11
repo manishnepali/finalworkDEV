@@ -1,9 +1,10 @@
 import { useState, useEffect, useCallback} from 'react';
 import "mapbox-gl/dist/mapbox-gl.css";
 import data from './data/geoData.json';
-import Map,  { Marker, 
+import Map, { Marker, 
   GeolocateControl,
    NavigationControl, 
+   useMap,
    Layer
 } from 'react-map-gl';
 import {
@@ -22,9 +23,11 @@ import {db,
     query, 
     setDoc,
      addDoc,
+    
     doc} from "../Backend/firebase"
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
+import { map } from '@firebase/util';
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -38,92 +41,131 @@ export default function MapBox() {
 
   const[ mapsOption, setOption ] = useState("visible");
 
-const imgg = "https://cdn.iconscout.com/icon/free/png-256/bar-606-1106181.png";
-  console.log(data)
-const geo = data.geometry;
+      const imgg = "https://cdn.iconscout.com/icon/free/png-256/bar-606-1106181.png";
+        console.log(data)
+      const geo = data.geometry;
+          
+        const geolocateControlRef = useCallback((ref) => {
+          if (ref) {
+            // Activate as soon as the control is loaded
+            ref.trigger();
+          }
+          console.log(ref);
+
+        }, []);
+      
+        const [dataEvent, setDataEvent] = useState([]);
+        const [userLattitude, setLattitude] = useState(4.3228026337517385);
+        const [userLongitude, setLongituude] = useState(50.84238125027097);
+        const [viewport, setViewport] = useState({
+          longitude: userLattitude,
+          latitude: userLongitude,
+          zoom: 14
+        });
+
+        //get data from fiebase
+        const getData = async() =>{
+          const q = query(collection(db, "geo_location"));
+
+          const querySnapshot = await getDocs(q);
+          const dataSet = querySnapshot.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id
+          }));
+          setDataEvent(dataSet);
+          console.log(dataSet)
+        } 
+        useEffect(()=>{
+          navigator.geolocation.getCurrentPosition(function(position) {
+            setLattitude(position.coords.longitude);
+            setLongituude(position.coords.latitude);
+            setViewport({
+              longitude: position.coords.latitude,
+              latitude: position.coords.longitude,
+              zoom: 14
+            })
+          console.log("cor loc:", userLattitude, userLongitude, viewport);
+          }
+          );
+          getData();
+          console.log("event catagory",dataEvent)
+        },[])
+      const [detailPage, setDetailPage] = useState(false);
+      const [dq, setDq] = useState() ;
+      const filterQuery = sessionStorage.getItem("filterQuery");
+      console.log(filterQuery);
+      function goToDetail(e){
+        
+        console.log(e.target.id)
+        const toGetDetail = e.target.id;
+        sessionStorage.setItem("detailQuery", toGetDetail);
+        setDq(toGetDetail)
+        setDetailPage(true)
+        
+      
+        // Map.flyTo(data[e.target.key].geometry.coordinates)
+      }
+      const [test, setTest] = useState(true);
+      function setWaypoint(){
+      setTest(true)
+        // const lattDetail = dataEvent[dq].geometry._lat;
+        // const longDetail = dataEvent[dq].geometry._long;
+        // console.log(lattDetail, longDetail);
+        // setViewport({
+        //   longitude: longDetail,
+        //   latitude: lattDetail,
+        //   zoom: 14
+        // })
+      }
+
+      function goBackToMap(){
+      setDetailPage(false);
+      setTest(false)
+      }
+
+      const [newEvent, setNewEvent] = useState([])
+      const addEventLoc= async (e)=>{
+        e.preventDefault();
+        const docRef = doc(db, "new_events", "002");
+        const payload = {test : "a new event"}
+        await setDoc(docRef, payload)
+      }
+
+      function NavigateButton() {
+        
+        const {current: map} = useMap();
+        
+          map.flyTo({center: [ userLattitude , userLongitude], zoom: 16});
+
+        
+      }
+
+      const [isLiked, setLiked] = useState("none");
+      const [countLikes, setLikes] = useState(document.getElementById('currentLikes'));
+      const [beforeLike, setBeforeLike] = useState(true)
      
-  const geolocateControlRef = useCallback((ref) => {
-    if (ref) {
-      // Activate as soon as the control is loaded
-      ref.trigger();
-    }
-    console.log(ref);
+      function submit(e){   
+        console.log("oldLikes",parseInt(countLikes)) 
+        setLikes(document.getElementById('currentLikes'));
+        const newLiked = parseInt(dataEvent[dq].likes);
+        console.log(newLiked)
 
-  }, []);
- 
-  const [dataEvent, setDataEvent] = useState([]);
-  const [userLattitude, setLattitude] = useState(4.3228026337517385);
-  const [userLongitude, setLongituude] = useState(50.84238125027097);
-  const [viewport, setViewport] = useState({
-    longitude: userLattitude,
-    latitude: userLongitude,
-    zoom: 14
-  });
+            if(isLiked == "none"){
+              setLikes(newLiked+1);
+              console.log(countLikes) 
 
-  //get data from fiebase
-  const getData = async() =>{
-    const q = query(collection(db, "geo_location"));
-
-    const querySnapshot = await getDocs(q);
-    const dataSet = querySnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id
-    }));
-    setDataEvent(dataSet);
-    console.log(dataSet)
-  } 
-  useEffect(()=>{
-    navigator.geolocation.getCurrentPosition(function(position) {
-      setLattitude(position.coords.longitude);
-      setLongituude(position.coords.latitude);
-      setViewport({
-        longitude: position.coords.latitude,
-        latitude: position.coords.longitude,
-        zoom: 14
-      })
-    console.log("cor loc:", userLattitude, userLongitude, viewport);
-    }
-    );
-    getData();
-    console.log("event catagory",dataEvent)
-  },[])
-const [detailPage, setDetailPage] = useState(false);
-const [dq, setDq] = useState() ;
-const filterQuery = sessionStorage.getItem("filterQuery");
-console.log(filterQuery);
-function goToDetail(e){
+              setLiked("red");
+              setBeforeLike(false);
+            }else{
+              setLikes(countLikes-1); 
+              console.log(countLikes) 
+              setLiked("none");
+              setBeforeLike(true);
+            }
+      }
    
-  console.log(e.target.id)
-  const toGetDetail = e.target.id;
-  sessionStorage.setItem("detailQuery", toGetDetail);
-  setDq(toGetDetail)
-  
-  setDetailPage(true)
-  
- 
-  // Map.flyTo(data[e.target.key].geometry.coordinates)
-}
-function setWaypoint(){
-  const lattDetail = dataEvent[dq].geometry._lat;
-  const longDetail = dataEvent[dq].geometry._long;
-  console.log(lattDetail, longDetail);
-  setViewport({
-    longitude: longDetail,
-    latitude: lattDetail,
-    zoom: 14
-  })
-}
-function goBackToMap(){
-setDetailPage(false);
-}
 
-const [newEvent, setNewEvent] = useState([])
-const addEventLoc= async (e)=>{
-  e.preventDefault();
-  const docRef = doc(db, "new_events", "002");
-  const payload = {test : "a new event"}
-  await setDoc(docRef, payload)
-}
+
   return (
     <div className='relative'>
  <Router>
@@ -136,7 +178,7 @@ const addEventLoc= async (e)=>{
       style={{width: '100vw', height: '60vh'}}
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
       mapboxAccessToken="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
-    
+      onViewportChange={viewport}
       
     >
       
@@ -152,32 +194,33 @@ const addEventLoc= async (e)=>{
           ></GeolocateControl>
 
 
-{dataEvent.map(event=>(
-            <Marker 
-            key={event.id}
-            longitude={event.geometry._long}
-               latitude={event.geometry._lat}
-               scale={2}>
-                 <div
-                 className="flex flex-col items-center w-20 h-20">
-                 <img 
-                        className='w-8 h-8 rounded-full bg-black'
-                        src={event.eventIcon}></img>
-                        
-                <h1 className='font-medium  text-l text-black '>{event.name}</h1>
-                </div>
-              </Marker>
-         ) )} 
+        {dataEvent.map(event=>(
+                    <Marker 
+                    key={event.id}
+                    longitude={event.geometry._long}
+                      latitude={event.geometry._lat}
+                      scale={2}>
+                        <div
+                        className="flex flex-col items-center w-20 h-20">
+                        <img 
+                                className='w-8 h-8 rounded-full bg-black'
+                                src={event.eventIcon}></img>
+                                
+                        <h1 className='font-medium  text-l text-black '>{event.name}</h1>
+                        </div>
+                      </Marker>
+                ) )} 
+                <NavigateButton/>
          
-      
-         
-      
+       
           
         </Map>
     
-          <div className='z-20 container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
+          <div
+          id="eventContainer"
+           className='z-20 container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
             
-   
+ 
                     {
                       detailPage ? 
                       <div id="eventDetail">
@@ -205,9 +248,26 @@ const addEventLoc= async (e)=>{
                                 className='w-16 ml-8 mt-8'
                                   src={dataEvent[dq].eventIcon}
                                   />
-                                  <p className='font-bold text-gray-500 text-lg p-4 mb-6 md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
+                                  <p className='font-bold 
+                                  text-gray-500 text-lg p-4 mb-6 
+                                  md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
+                                  <button
+                                  onClick={submit}>
+                                    
+                                    <svg xmlns="http://www.w3.org/2000/svg" 
+                                    className="h-12 w-12"
+                                    style={{backgroundColor : ""}}
+                                     fill={isLiked} 
+                                    viewBox="0 0 24 24" stroke="currentColor" 
+                                    strokeWidth={2}>
+                                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                    {beforeLike ? <p id="currentLikes"> {dataEvent[dq].likes}</p>:
+                                     <p> {countLikes}</p>}
+                                   
+                                    like this {countLikes}
+                                    </button>
                               <button 
-                              onClick={setWaypoint}
                               class="bg-rose-600 w-2/3 ml-16 text-l 
                                 text-white font-bold py-2 px-3
                                 rounded-full mt-4">
