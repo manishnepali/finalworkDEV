@@ -27,7 +27,7 @@ export default function Start() {
              <Route exact path="/">
             
             <div className='bg-backimg bg-center bg-cover  h-screen overflow-hidden'>
-            <img className ="fixed ml-40 top-8 p-4 w-28 h-28 "
+            <img className ="fixed top-10 left-1/4 w-2/4 "
               src="https://i.ibb.co/dKzS64v/navitlogo.png"/>
 
                
