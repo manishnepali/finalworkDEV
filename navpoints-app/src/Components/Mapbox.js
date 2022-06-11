@@ -253,12 +253,12 @@ export default function MapBox() {
                                 className='w-20'          
                                 src={dataEvent[dq].eventIcon}
                                   /> <h1
-                                  className="font-bold text-3xl mt-2 ml-8 text-center ">
+                                  className="font-bold text-3xl mt-2 ml-8 text-left ">
                                       {dataEvent[dq].name}
                                     </h1>
                                     </span>
                                   <p
-                                  className="font-bold text-2xl mt-2 ml-4 text-justify ">{dataEvent[dq].description}</p>
+                                  className="font-bold text-2xl mt-2 ml-4 text-justify overflow-x max-h-30">{dataEvent[dq].description}</p>
                               <span className='flex-wrap'>
                                   <p className='font-bold 
                                   text-gray-500 text-lg p-4

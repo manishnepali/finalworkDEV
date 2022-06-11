@@ -95,10 +95,9 @@ const [bgColor, isBgColor] = useState(false);
            
              <Route exact path="/explore">
             <div className='bg-backimg bg-center bg-cover h-screen md:flex overflow-hidden'>
-              <img className ="fixed ml-40 top-0 p-4 w-28 h-28 "
-              src="https://i.ibb.co/dKzS64v/navitlogo.png"/>
+            
                
-                <div className='container lg:ml-4 md:ml-4 resize-y bg-white box-border h-full relative top-1/4 w-screen pb-36 rounded-t-2xl items-center' >
+                <div className='top-20 h-full container lg:ml-4 md:ml-4 resize-y bg-white box-border  relative w-screen pb-36 rounded-t-2xl items-center ' >
                 <div className='flex pl-4 pt-8 '>
                 <Link to="/">
                 <svg xmlns="http://www.w3.org/2000/svg" 
