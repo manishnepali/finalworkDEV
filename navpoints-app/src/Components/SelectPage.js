@@ -114,7 +114,7 @@ const [bgColor, isBgColor] = useState(false);
                     </h1>
                    
              
-                    <ul className="flex flex-wrap max-h-4/5 overflow-x-auto mx-4 mt-4">
+                    <ul className="flex flex-wrap justify-between max-h-4/5 overflow-x-auto mx-4 mt-4">
                      {/* <Select 
                      className="text-4xl text-black font-bold mt-4 ml-4"
                     
@@ -122,7 +122,7 @@ const [bgColor, isBgColor] = useState(false);
                       
                     
                       {data.map((category, index)=>{
-                        return <li className="p-4">
+                        return <li className="p-4 ">
                           <input 
                           onChange={getSeleectedCategory}
                           className="h-8 w-8 border border-gray-300 bg-white checked:bg-blue-600 

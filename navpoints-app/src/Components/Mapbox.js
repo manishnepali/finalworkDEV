@@ -295,7 +295,8 @@ export default function MapBox() {
                          className=''>   
                            
                            
-                            <div className='flex pl-4 pt-8 '>
+                            <div className='flex justify-around pl-4 pt-8 w-full border-b-2 border-gray-200'>
+                              <span>
                                   <Link to="/explore">
                                   <svg xmlns="http://www.w3.org/2000/svg" 
                                   class="h-14 w-14" viewBox="0 0 20 20" 
@@ -303,9 +304,12 @@ export default function MapBox() {
                               <path fill-rule="evenodd"
                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
                                 clip-rule="evenodd" />
-                            </svg></Link>
+                            </svg></Link></span>
+                     
+                            <span className='w-3/5'></span>
+                            <span className='mr-4'>
                                           <Link to="/addLocation">  
-                                    
+                                   
                                               <svg xmlns="http://www.w3.org/2000/svg"
                                               style={{visibility: mapsOption}}
                                                className="h-14 w-14" viewBox="0 0 20 20"
@@ -314,7 +318,8 @@ export default function MapBox() {
                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" 
                                                    clip-rule="evenodd" />
                                                 </svg>
-                                  </Link>
+                                               
+                                  </Link> </span>
                                  
                             </div>
                              <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
@@ -337,7 +342,7 @@ export default function MapBox() {
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                              onClick={goToDetail}
                                              id={index}
-                                             class="h-14 w-14" viewBox="0 0 20 20" 
+                                             class="h-14 w-14 mr-4" viewBox="0 0 20 20" 
                                              fill="#DC2625">
                                             <path 
                                             id={index} d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
