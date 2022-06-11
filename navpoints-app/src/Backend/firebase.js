@@ -16,6 +16,7 @@ import {
   where,
   addDoc,
   setDoc,
+  arrayUnion,
   updateDoc,
   doc
 } from "firebase/firestore";
@@ -101,5 +102,6 @@ export {
   sendPasswordReset,
   logout,
   setDoc,
+  arrayUnion,
   doc
 };

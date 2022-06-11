@@ -37,6 +37,7 @@ function Login() {
     if (user) {
       console.log(user);
       localStorage.setItem("username",user.displayName);
+      localStorage.setItem("userId",user.id);
       localStorage.setItem("usermail",user.email);
       localStorage.setItem("userimg", user.photoURL)
       localStorage.setItem("logged","logged in");

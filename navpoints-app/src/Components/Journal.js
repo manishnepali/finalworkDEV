@@ -47,10 +47,11 @@ function Journal() {
               <div id="background_journal" 
               class=" z-10 absolute top-0 w-full h-full bg-center bg-cover bg-backimg" >
                
-                  <div className='container lg:ml-4 md:ml-4 resize-y bg-white box-border h-4/4 relative top-1/4 w-screen pb-36 rounded-t-2xl items-center' >
+                  <div className='container lg:ml-4 md:ml-4 resize-y bg-white box-border h-full relative top-1/4 w-screen pb-36 rounded-t-2xl items-center' >
                
               
-                    <h1 className="font-bold text-5xl ml-4">
+                    <h1 className="font-bold text-black text-5xl ml-4">
+                      in development
                    </h1>
             
                    {/* <ul className="grid grid-cols-2 max-h-60 mt-10 overflow-y-auto ml-4 mr-4">

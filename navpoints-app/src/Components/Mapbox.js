@@ -24,6 +24,7 @@ import {db,
     setDoc,
      addDoc,
      updateDoc,
+     arrayUnion,
     doc} from "../Backend/firebase"
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
@@ -86,10 +87,12 @@ export default function MapBox() {
             })
           console.log("cor loc:", userLattitude, userLongitude, viewport);
           }
-          );
+          );        
           getData();
           console.log("event catagory",dataEvent)
         },[])
+  
+        
       const [detailPage, setDetailPage] = useState(false);
       const [dq, setDq] = useState() ;
       const filterQuery = sessionStorage.getItem("filterQuery");
@@ -229,7 +232,7 @@ export default function MapBox() {
           id="eventContainer"
            className='z-20 container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
             
- 
+
                     {
                       detailPage ? 
                       <div id="eventDetail">
@@ -237,7 +240,7 @@ export default function MapBox() {
                             <li> 
                               <svg 
                                 onClick={goBackToMap}
-                              class="w-16 h-16  dark:text-rose-600" 
+                              class="w-16 h-16  dark:text-red-600" 
                               fill="none" stroke="currentColor" viewBox="0 0 24 24" 
                               xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round"
@@ -249,36 +252,44 @@ export default function MapBox() {
                             <div id="detailContainer"
                             className='basis-0 grow p-6 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
 
-                              <h1
-                              className="font-bold text-2xl mt-4 ml-8">
-                                  {dataEvent[dq].name}
-                                </h1>
+                             <span className='flex flex-wrap'>
                                 <img
-                                className='w-16 ml-8 mt-8'
+                                className='w-24'
                                   src={dataEvent[dq].eventIcon}
-                                  />
+                                  /> <h1
+                                  className="font-bold text-4xl mt-4 ml-8">
+                                      {dataEvent[dq].name}
+                                    </h1>
+                                    </span>
+                                  <p
+                                  className="font-meduim text-xl mt-4 ml-8">{dataEvent[dq].description}</p>
+                              <span className='flex-wrap'>
                                   <p className='font-bold 
                                   text-gray-500 text-lg p-4 mb-6 
                                   md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
                                   <button
+                                  className='float-right'
                                   onClick={submit}>
                                     
                                     <svg xmlns="http://www.w3.org/2000/svg" 
-                                    className="h-12 w-12"
+                                    className="h-16 w-16 bottom-8"
                                     style={{backgroundColor : ""}}
                                      fill={isLiked} 
                                     viewBox="0 0 24 24" stroke="currentColor" 
                                     strokeWidth={2}>
-                                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                      <path strokeLinecap="round" 
+                                      strokeLinejoin="round"
+                                       d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                     </svg>
                                     {beforeLike ? <p id="currentLikes"> {dataEvent[dq].likes}</p>:
                                      <p> {countLikes}</p>}
                                    
-                                    like this {countLikes}
+                                    
                                     </button>
+                                    </span>
                               <button 
-                              class="bg-rose-600 w-2/3 ml-16 text-l 
-                                text-white font-bold py-2 px-3
+                              class="bg-red-600 w-2/3 text-l 
+                                text-white font-bold py-4 px-5
                                 rounded-full mt-4">
                                 set waypoint
                                 </button>
@@ -291,7 +302,7 @@ export default function MapBox() {
                             <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
                                   <li> <Link to="/explore">
                                     <svg 
-                                    class="w-16 h-16  dark:text-rose-600"
+                                    class="w-16 h-16  dark:text-red-600"
                                       fill="none" stroke="currentColor" 
                                       viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" 
@@ -307,7 +318,7 @@ export default function MapBox() {
                                       return <li className=''>
                                           <button onClick={goToDetail}
                                           
-                                          class=" float-right mt-8 mr-8  bg-rose-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
+                                          class=" float-right mt-8 mr-8  bg-red-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
                                           >
                                             <img 
                                           onClick={goToDetail}
@@ -338,7 +349,7 @@ export default function MapBox() {
                  <Link to="/addLocation">  
                <button
                style={{visibility: mapsOption}}
-               class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
+               class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
             
                <svg viewBox="0 0 20 20"  class="w-6 h-6 inline-block">
             <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601

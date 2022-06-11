@@ -12,7 +12,9 @@ import {db,
     query, 
     setDoc,
      addDoc,
-    doc} from "../Backend/firebase"
+     arrayUnion,
+    doc,
+    updateDoc} from "../Backend/firebase"
 import SelectPage from './SelectPage';
 import MapBox from './Mapbox';
 
@@ -26,6 +28,8 @@ export default function AddLocation() {
  const [data, setData] = useState([]);
 
 const username = localStorage.getItem("username");
+const userId = localStorage.getItem("userId");
+
  //get data from fiebase
  const getData = async() =>{
    const q = query(collection(db, "event_category"));
@@ -61,9 +65,11 @@ const addEventLoc= async (e)=>{
   const select = document.getElementById("selcat");
   const selectedCategory = select.options[select.selectedIndex].value;
   const selectedCategoryname = select.options[select.selectedIndex].text;
+  const newDescription = document.getElementById("description").value;
   console.log(selectedCategory);
   const newPlaceName = document.getElementById("newPlace").value;
   const newPlaceId = document.getElementById("newId").value;
+
   console.log(newPlaceName);
  const docRef = doc(db, "geo_location", newPlaceId);
   const payload = {name : newPlaceName,
@@ -73,11 +79,15 @@ const addEventLoc= async (e)=>{
                     },
                   eventIcon: selectedCategory,
                 creator: username,
-              categoryName: selectedCategoryname }
+              categoryName: selectedCategoryname,
+            description: newDescription }
+// const docUser = doc(db, "users", userId);
+// const createdId = {created: arrayUnion(newPlaceId)} ;
 if(longitude == "" && latitude == ""){
 alert("set your location on to perform this action")
 }else{
   await setDoc(docRef, payload);
+  // await setDoc(docUser, createdId);
   alert("done");
 }
  
@@ -92,7 +102,7 @@ alert("set your location on to perform this action")
                 <Route exact path="/addLocation">
                 
                     <div 
-                    className='w-4/5 h-3/4 top-1/4 flex flex-col ml-12 p-12  mt-32'>
+                    className='w-4/5 h-3/4 top-1/4 flex flex-col ml-12 p-12 '>
                         
 
                 
@@ -106,7 +116,10 @@ alert("set your location on to perform this action")
                     id="newPlace"
                     class="rounded-lg p-4  font-bold border text-gray-800 border-black bg-white my-4" 
                       placeholder="name for this hotspot"/>
-                      
+                            <input
+                    id="description"
+                    class="rounded-lg p-4  font-bold border text-gray-800 border-black bg-white my-4 w-5/6 h-20" 
+                      placeholder="description"/>
                       <h1 className='font-bold text-xl'>choose a catagory</h1>
                       <select id="selcat"
                       className="my-4 font-bold text-xl p-4 border-black border">
@@ -116,13 +129,13 @@ alert("set your location on to perform this action")
                           </select>
                         <button 
                     onClick={addEventLoc}
-                    class="px-8 rounded-lg bg-rose-400  
+                    class="px-8 rounded-lg bg-red-600  
                     text-white font-bold p-4  my-4">
                        
                       add</button>
-
+                    
                      <Link to="/maps"><button 
-                    class="px-4 rounded-lg bg-rose-400  
+                    class="px-4 rounded-lg bg-red-600  
                     text-white font-bold p-4  my-4">
                        
                       go back</button></Link> 
