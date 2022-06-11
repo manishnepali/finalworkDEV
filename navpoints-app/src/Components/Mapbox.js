@@ -23,7 +23,7 @@ import {db,
     query, 
     setDoc,
      addDoc,
-    
+     updateDoc,
     doc} from "../Backend/firebase"
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
@@ -120,7 +120,9 @@ export default function MapBox() {
 
       function goBackToMap(){
       setDetailPage(false);
-      setTest(false)
+      setTest(false);
+      setBeforeLike(true);
+      setLiked("none")
       }
 
       const [newEvent, setNewEvent] = useState([])
@@ -143,24 +145,31 @@ export default function MapBox() {
       const [isLiked, setLiked] = useState("none");
       const [countLikes, setLikes] = useState(document.getElementById('currentLikes'));
       const [beforeLike, setBeforeLike] = useState(true)
-     
-      function submit(e){   
+     console.log(beforeLike)
+      async function submit(e){   
         console.log("oldLikes",parseInt(countLikes)) 
         setLikes(document.getElementById('currentLikes'));
         const newLiked = parseInt(dataEvent[dq].likes);
         console.log(newLiked)
 
-            if(isLiked == "none"){
+            if(isLiked == "none" && beforeLike == true){
               setLikes(newLiked+1);
               console.log(countLikes) 
 
               setLiked("red");
               setBeforeLike(false);
-            }else{
+              const docRef = doc(db, "geo_location", dataEvent[dq].id);
+              const payload = {likes : countLikes}
+              await updateDoc(docRef, payload)
+      
+            }else if(isLiked == "red" && beforeLike == false){
               setLikes(countLikes-1); 
               console.log(countLikes) 
               setLiked("none");
               setBeforeLike(true);
+              const docRef = doc(db, "geo_location", dataEvent[dq].id);
+              const payload = {likes : countLikes}
+              await updateDoc(docRef, payload)
             }
       }
    

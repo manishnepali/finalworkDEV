@@ -16,6 +16,7 @@ import {
   where,
   addDoc,
   setDoc,
+  updateDoc,
   doc
 } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -91,6 +92,7 @@ export {
   query,
   db,
   getDocs,
+  updateDoc,
   where,
   collection,
   signInWithGoogle,
