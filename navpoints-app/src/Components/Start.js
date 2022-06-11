@@ -39,7 +39,7 @@ export default function Start() {
                     </h1>
                     {exButton ?
                      <li> <Link to="/explore"><button class="bg-red-600 w-2/3 ml-16 text-3xl text-white font-bold py-3 px-5 rounded-full mt-4 items-stretch ">
-                     let's start 
+                     Let's start 
                        </button></Link> </li>:
                         <li> <Link to="/login"><button class="bg-red-600 w-2/3 ml-16 text-xl text-white font-bold py-3 px-5 rounded-full mt-4 items-stretch ">
                         log in with google

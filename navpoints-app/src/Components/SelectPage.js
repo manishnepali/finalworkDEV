@@ -110,7 +110,7 @@ const [bgColor, isBgColor] = useState(false);
                    </Link>
                  </div>
                      <h1 className="font-bold text-5xl mt-4 ml-8">
-                     In mood for:
+                     In the mood for:
                     </h1>
                    
              

@@ -120,7 +120,7 @@ alert("set your location on to perform this action")
                     id="description"
                     class="rounded-lg p-4  font-bold border text-gray-800 border-black bg-white my-4 w-5/6 h-20" 
                       placeholder="description"/>
-                      <h1 className='font-bold text-xl'>choose a catagory</h1>
+                      <h1 className='font-bold text-xl'>choose a Category</h1>
                       <select id="selcat"
                       className="my-4 font-bold text-xl p-4 border-black border">
                         {data.map((category, index) => {

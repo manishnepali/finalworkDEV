@@ -53,7 +53,7 @@ function Login() {
     className="flex ">
        
        
-        <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-36 p-20">
+        <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-12 p-20">
         <img 
         className="w-36 ml-10"
         src={logo}/>
@@ -83,8 +83,8 @@ function Login() {
         <button 
         className="text-white bg-rose-600
 
-        text-2xl  font-bold py-3 px-5 rounded-full mt-4 "
-        >lets start</button>
+        text-2xl  font-bold py-2 px-3 rounded-full mt-4 "
+        >Let's start</button>
         </Link>
         <br/>
         <button 
