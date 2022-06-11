@@ -60,21 +60,25 @@ function Login() {
        
         { isLoggedIn ?
         <div
-         className="container mt-4 ml-16 bg-white p-4 
-        lg:order-2 flex-col justify-center ">
-         
+        className='basis-0 grow p-6 mb-8 text-center
+        w-100
+         md:text-left md:flex md:flex-col md:justify-center md:items-center'>
+         <div
+         className="w-full flex justify-around">
             <br/>
             <img src={user.photoURL}
             className="w-24 h-24 rounded-full"
             />
              <h1
-          className="text-l text-black font-bold mt-4">
+          className="text-xl text-black font-bold align-baseline
+          text-justify ml-4">
             logged in as:
             <br/>
         {user.displayName} <br/>
         {user.email}
 
         </h1>
+        </div>
         <Link to="/explore">
         <button 
         className="text-white bg-rose-600

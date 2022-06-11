@@ -70,8 +70,38 @@ function goToSelect(){
                   <AddLocation/>
                 </Route>
         </Switch>
+        <div id="navbar"
+        className="z-40 fixed bottom-0 flex  w-full bg-red-600 rounded-t-3xl">
+          <div class="flex justify-around w-full">
+        <span class="flex flex-col items-center p-3 ">
+        <Link to='/maps'> <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" viewBox="0 0 20 20" fill="white">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg></Link>
+        <Link to='/explore'>
+								<p class="font-bold text-white text-l mb-2 transition-all duration-200">
+									Home
+								</p></Link>
+                </span>
+                <span class="flex flex-col items-center p-3 ">
+                <Link to='/maps'><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" viewBox="0 0 20 20" fill="white">
+                  <path fill-rule="evenodd" d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd" />
+                </svg></Link>
+							  <Link to='/maps'>	<p class="font-bold text-white text-l mb-2 transition-all duration-200">
+									explore
+								</p></Link>
+                </span>
+                <span class="flex flex-col items-center p-3 ">
+               <Link to="/login"><svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" viewBox="0 0 20 20" fill="white">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                  </svg></Link>
+								<Link to="/login"> <p class="font-bold text-white text-l mb-2 transition-all duration-200">
+									profile
+								</p></Link>
+                </span>
+                </div>
+        </div>
      
-      <div id="nav" className=''>
+      {/* <div id="nav" className=''>
         <button
         onClick={menuOpen}
                 class="fixed z-30 right-4 p-4 bottom-4 w-16 h-16 bg-rose-600 rounded-full hover:bg-red-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
@@ -110,8 +140,8 @@ function goToSelect(){
         class="fixed z-30 text-white right-4 p-4 mb-4 bottom-80 w-16 h-16 bg-rose-600 rounded-full">
         <img src={userIcon} className=""/>
        </button></Link>
-        </div> 
-        </Router>
+       </div> */}
+        </Router> 
        
     </div>
     

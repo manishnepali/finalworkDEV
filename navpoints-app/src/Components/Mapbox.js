@@ -236,36 +236,32 @@ export default function MapBox() {
                     {
                       detailPage ? 
                       <div id="eventDetail">
-                            <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
-                            <li> 
-                              <svg 
-                                onClick={goBackToMap}
-                              class="w-16 h-16  dark:text-red-600" 
-                              fill="none" stroke="currentColor" viewBox="0 0 24 24" 
-                              xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round"
-                                  stroke-linejoin="round" stroke-width="2"
-                                  d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z">
-                                    </path></svg>
-                              </li>
-                            </ul>
+                   <div className='flex pl-4 pt-8 '>
+                                  <svg xmlns="http://www.w3.org/2000/svg" 
+                                  class="h-14 w-14" viewBox="0 0 20 20" 
+                                  fill="#DC2625"
+                                  onClick={goBackToMap}>
+                              <path fill-rule="evenodd"
+                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                clip-rule="evenodd" />
+                            </svg> </div>
                             <div id="detailContainer"
-                            className='basis-0 grow p-6 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
+                            className='basis-0 grow p-6 mb-8 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
 
-                             <span className='flex flex-wrap'>
+                             <span className='flex '>
                                 <img
-                                className='w-24'
-                                  src={dataEvent[dq].eventIcon}
+                                className='w-20'          
+                                src={dataEvent[dq].eventIcon}
                                   /> <h1
-                                  className="font-bold text-4xl mt-4 ml-8">
+                                  className="font-bold text-3xl mt-2 ml-8 text-center ">
                                       {dataEvent[dq].name}
                                     </h1>
                                     </span>
                                   <p
-                                  className="font-meduim text-xl mt-4 ml-8">{dataEvent[dq].description}</p>
+                                  className="font-bold text-2xl mt-2 ml-4 text-justify ">{dataEvent[dq].description}</p>
                               <span className='flex-wrap'>
                                   <p className='font-bold 
-                                  text-gray-500 text-lg p-4 mb-6 
+                                  text-gray-500 text-lg p-4
                                   md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
                                   <button
                                   className='float-right'
@@ -288,9 +284,9 @@ export default function MapBox() {
                                     </button>
                                     </span>
                               <button 
-                              class="bg-red-600 w-2/3 text-l 
+                              class="bg-red-600 w-2/3 text-xl 
                                 text-white font-bold py-4 px-5
-                                rounded-full mt-4">
+                                rounded-full ">
                                 set waypoint
                                 </button>
                                 </div>
@@ -299,40 +295,55 @@ export default function MapBox() {
                          className=''>   
                            
                            
-                            <ul className='flex flex-col justify-center pl-4 pt-8   mx-auto'>
-                                  <li> <Link to="/explore">
-                                    <svg 
-                                    class="w-16 h-16  dark:text-red-600"
-                                      fill="none" stroke="currentColor" 
-                                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" 
-                                        stroke-width="2"
-                                        d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z">
-                                          </path></svg></Link>
-                                  </li>
-                            </ul>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto mx-8'>
+                            <div className='flex pl-4 pt-8 '>
+                                  <Link to="/explore">
+                                  <svg xmlns="http://www.w3.org/2000/svg" 
+                                  class="h-14 w-14" viewBox="0 0 20 20" 
+                                  fill="#DC2625">
+                              <path fill-rule="evenodd"
+                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                clip-rule="evenodd" />
+                            </svg></Link>
+                                          <Link to="/addLocation">  
+                                    
+                                              <svg xmlns="http://www.w3.org/2000/svg"
+                                              style={{visibility: mapsOption}}
+                                               className="h-14 w-14" viewBox="0 0 20 20"
+                                               fill="#DC2625">
+                                                  <path fill-rule="evenodd"
+                                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" 
+                                                   clip-rule="evenodd" />
+                                                </svg>
+                                  </Link>
+                                 
+                            </div>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
                                       return <li className=''>
-                                          <button onClick={goToDetail}
-                                          
-                                          class=" float-right mt-8 mr-8  bg-red-600 w-16 text-l text-white font-bold py-1 px-4 rounded-full "
-                                          >
-                                            <img 
-                                          onClick={goToDetail}
-                                          id={index}
-                                          src={eye} className=""/></button>
-                                        <span className='flex flex-row py-8 sm:py-8 space-x-8 ml-4'>
+                                         
+                                            
+                                           
+                                        <span className='flex flex-row py-8 sm:py-8 justify-around align-baseline ml-4'>
 
                                         <img 
                                         
                                         className='w-20 h-20 rounded-full'
                                         src={event.eventIcon}></img>
 
-                                        <h1 className="font-bold  text-xl text-black mt-4 mx-8 "
+                                        <h1 className="font-bold  text-xl text-black mt-4 w-3/6 "
                                         key={index}> {event.name}  </h1>
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             onClick={goToDetail}
+                                             id={index}
+                                             class="h-14 w-14" viewBox="0 0 20 20" 
+                                             fill="#DC2625">
+                                            <path 
+                                            id={index} d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            <path id={index} 
+                                            fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                          </svg>
                                     </span>
                                     
                                         {/* <span id="loc" 
@@ -346,17 +357,7 @@ export default function MapBox() {
                               </ul>
                             </div>
                     }
-                 <Link to="/addLocation">  
-               <button
-               style={{visibility: mapsOption}}
-               class="fixed z-10 right-24 p-4 bottom-4 w-16 h-16 bg-blue-600 rounded-full hover:bg-red-600 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none">
-            
-               <svg viewBox="0 0 20 20"  class="w-6 h-6 inline-block">
-            <path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
-                                    C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
-                                    C15.952,9,16,9.447,16,10z" />
-          </svg>  
-       </button></Link>
+                
       
               
                    

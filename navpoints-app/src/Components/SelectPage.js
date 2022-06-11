@@ -99,23 +99,17 @@ const [bgColor, isBgColor] = useState(false);
               src="https://i.ibb.co/dKzS64v/navitlogo.png"/>
                
                 <div className='container lg:ml-4 md:ml-4 resize-y bg-white box-border h-full relative top-1/4 w-screen pb-36 rounded-t-2xl items-center' >
-               
+                <div className='flex pl-4 pt-8 '>
                 <Link to="/">
-                <svg className="w-16 h-16 mx-8 mt-8  dark:text-rose-600" 
-                fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                 xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round"
-                  stroke-linejoin="round" stroke-width="2" 
-                  d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z">
-                    </path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                                  class="h-14 w-14" viewBox="0 0 20 20" 
+                                  fill="#DC2625">
+                              <path fill-rule="evenodd"
+                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                clip-rule="evenodd" />
+                            </svg>
                    </Link>
-                   <svg xmlns="http://www.w3.org/2000/svg"
-                    className="w-16 h-16 mx-8 mt-8dark:text-rose-600" 
-                    fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" 
-                        d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg>
+                 </div>
                      <h1 className="font-bold text-5xl mt-4 ml-8">
                      In mood for:
                     </h1>
