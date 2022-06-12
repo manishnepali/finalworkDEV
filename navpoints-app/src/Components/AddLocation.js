@@ -80,7 +80,8 @@ const addEventLoc= async (e)=>{
                   eventIcon: selectedCategory,
                 creator: username,
               categoryName: selectedCategoryname,
-            description: newDescription }
+            description: newDescription,
+          likes:0 }
 // const docUser = doc(db, "users", userId);
 // const createdId = {created: arrayUnion(newPlaceId)} ;
 if(longitude == "" && latitude == ""){
