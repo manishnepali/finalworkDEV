@@ -246,7 +246,7 @@ export default function MapBox() {
                       <div id="eventDetail">
                    <div className='flex '>
                                   <svg xmlns="http://www.w3.org/2000/svg" 
-                                  class="h-14 w-14" viewBox="0 0 20 20" 
+                                  class="h-14 w-14 my-4 ml-4" viewBox="0 0 20 20" 
                                   fill="#DC2625"
                                   onClick={goBackToMap}>
                               <path fill-rule="evenodd"
@@ -254,11 +254,12 @@ export default function MapBox() {
                                 clip-rule="evenodd" />
                             </svg> </div>
                             <div id="detailContainer"
-                            className='basis-0 grow mb-8 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
+                            className='basis-0 grow mb-8 mx-2 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center
+                            '>
 
-                             <span className='flex '>
+                             <span className='flex align-baseline w-full'>
                                 <img
-                                className='w-20'          
+                                className='w-16 sm:w-20'          
                                 src={dataEvent[dq].eventIcon}
                                   /> <h1
                                   className="font-black text-3xl mt-2 ml-2 text-left ">
@@ -266,19 +267,19 @@ export default function MapBox() {
                                     </h1>
                                     </span>
                                   <p
-                                  className="font-bold text-2xl mt-2 ml-4 text-justify overflow-y-auto max-h-30
-                                  sm-inset-10
-                                  ">{dataEvent[dq].description}</p>
-                              <span className='flex-wrap'>
+                                  className="font-bold text-2xl my-4 mx-4 text-justify overflow-y-auto max-h-30
+                                  md:max-w-md md:p-0">
+                                    {dataEvent[dq].description}</p>
+                              <span className='flex justify-around  w-full'>
                                   <p className='font-bold 
                                   text-gray-500 text-lg p-4
                                   md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
                                   <button
-                                  className='float-right'
+                                  className=''
                                   onClick={submit}>
                                     
                                     <svg xmlns="http://www.w3.org/2000/svg" 
-                                    className="h-16 w-16 bottom-8"
+                                    className="h-16 w-16"
                                     style={{backgroundColor : ""}}
                                      fill={isLiked} 
                                     viewBox="0 0 24 24" stroke="red" 
@@ -293,9 +294,10 @@ export default function MapBox() {
                                     
                                     </button>
                                     </span>
+                                    
                               <button 
                               class="px-4 rounded-lg bg-red-600  
-                              text-white font-bold p-4  my-4">
+                              text-white text-xl font-bold p-4  my-4">
                                 set waypoint
                                 </button>
                                 </div>
@@ -304,11 +306,11 @@ export default function MapBox() {
                          className=''>   
                            
                            
-                            <div className='flex justify-around w-full py-4  border-gray-200'>
+                            <div className='flex justify-around w-full py-2  border-gray-200'>
                               <span>
                                   <Link to="/explore">
                                   <svg xmlns="http://www.w3.org/2000/svg" 
-                                  class="h-14 w-14" viewBox="0 0 20 20" 
+                                  class="h-14 w-14 ml-4" viewBox="0 0 20 20" 
                                   fill="#DC2625">
                               <path fill-rule="evenodd"
                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
@@ -331,7 +333,7 @@ export default function MapBox() {
                                   </Link> </span>
                                  
                             </div>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-96 my-4 overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-96 sm:max-h-80 my-4 overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
