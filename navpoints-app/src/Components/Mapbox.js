@@ -104,6 +104,9 @@ export default function MapBox() {
         sessionStorage.setItem("detailQuery", toGetDetail);
         setDq(toGetDetail)
         setDetailPage(true)
+        const lattDetail = dataEvent[dq].geometry._lat;
+        const longDetail = dataEvent[dq].geometry._long;
+        setNavToPosition([longDetail, lattDetail])
         
       
         // Map.flyTo(data[e.target.key].geometry.coordinates)
