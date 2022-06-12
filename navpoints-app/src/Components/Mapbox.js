@@ -109,23 +109,14 @@ export default function MapBox() {
         // Map.flyTo(data[e.target.key].geometry.coordinates)
       }
       const [test, setTest] = useState(true);
-      function setWaypoint(){
-      setTest(true)
-        // const lattDetail = dataEvent[dq].geometry._lat;
-        // const longDetail = dataEvent[dq].geometry._long;
-        // console.log(lattDetail, longDetail);
-        // setViewport({
-        //   longitude: longDetail,
-        //   latitude: lattDetail,
-        //   zoom: 14
-        // })
-      }
+     
 
       function goBackToMap(){
       setDetailPage(false);
       setTest(false);
       setBeforeLike(true);
       setLiked("none")
+      setNavToPosition([ userLattitude , userLongitude])
       }
 
       const [newEvent, setNewEvent] = useState([])
@@ -136,12 +127,26 @@ export default function MapBox() {
         await setDoc(docRef, payload)
       }
 
+      const [navToPosition, setNavToPosition] = useState([ userLattitude , userLongitude]);
+      function setWaypoint(){
+
+        setTest(true)
+        const lattDetail = dataEvent[dq].geometry._lat;
+        const longDetail = dataEvent[dq].geometry._long;
+        setNavToPosition([lattDetail, longDetail])
+          
+          // console.log(lattDetail, longDetail);
+          // setViewport({
+          //   longitude: longDetail,
+          //   latitude: lattDetail,
+          //   zoom: 14
+          // })
+        }
       function NavigateButton() {
         
         const {current: map} = useMap();
         
-          map.flyTo({center: [ userLattitude , userLongitude], zoom: 16});
-
+          map.flyTo({center: navToPosition, zoom: 16});
         
       }
 
