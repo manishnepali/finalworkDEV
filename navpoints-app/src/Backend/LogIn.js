@@ -55,7 +55,7 @@ function Login() {
        
         <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-12 p-20">
         <img 
-        className="w-36 ml-10"
+        className="w-36 mx-8"
         src={logo}/>
        
         { isLoggedIn ?
@@ -81,22 +81,21 @@ function Login() {
         </div>
         <Link to="/explore">
         <button 
-        className="text-white bg-rose-600
+        
+        
 
-        text-2xl  font-bold py-2 px-3 rounded-full mt-4 "
+        className="px-8 rounded-lg bg-red-600  
+        text-white font-bold p-4  my-4  "
         >Let's start</button>
         </Link>
         <br/>
         <button 
-        className="text-white bg-rose-500
-
-        text-xl  font-bold py-1 px-2 rounded-full mt-4 "
+        className="px-8 rounded-lg bg-red-600  
+        text-white font-bold p-4  my-4  "
         onClick={signOut}>Log out</button> </div> : 
         <div>
-           <button className="text-white bg-rose-600
-
-            text-2xl  font-bold py-3 px-5 rounded-full mt-8 items-stretch
-            mr-2 mb-2 "
+           <button className="flex justify-around px-8 rounded-lg bg-red-600  
+          text-white font-bold p-4 mx-4  my-4"
             onClick={signInWithGoogle}>
             <h1> Login with Google</h1>
             </button>
