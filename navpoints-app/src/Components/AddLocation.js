@@ -134,7 +134,8 @@ alert("set your location on to perform this action")
                        
                       add</button>
                     
-                     <Link to="/maps"><button 
+                     <Link to="/maps">
+                      <button 
                     class="px-8 rounded-lg bg-red-600  
                     text-white font-bold p-4  my-4">
                        

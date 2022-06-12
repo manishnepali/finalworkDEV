@@ -289,7 +289,7 @@ export default function MapBox() {
                                   onClick={submit}>
                                     
                                     <svg xmlns="http://www.w3.org/2000/svg" 
-                                    className="h-16 w-16"
+                                    className="h-14 w-14"
                                     style={{backgroundColor : ""}}
                                      fill={isLiked} 
                                     viewBox="0 0 24 24" stroke="red" 
@@ -343,7 +343,7 @@ export default function MapBox() {
                                   </Link> </span>
                                  
                             </div>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 h-80  my-4 overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 h-96  my-4 overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
