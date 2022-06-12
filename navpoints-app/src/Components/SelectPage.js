@@ -126,7 +126,7 @@ const [bgColor, isBgColor] = useState(false);
                           <input 
                           onChange={getSeleectedCategory}
                           className="h-8 w-8 border border-gray-300 bg-white checked:bg-blue-600 
-                          checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2"
+                          checked:border-red-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2"
                           type="radio" id={category.id} name="filter" value={category.name}/>
                           <label 
                           className="text-2xl text-black font-bold my-4 ml-4"
@@ -143,7 +143,9 @@ const [bgColor, isBgColor] = useState(false);
               <Link to="/maps">
                       <button 
                       
-                      className="bg-red-600 w-2/3 ml-16 text-3xl text-white font-bold py-5 px-6 rounded-full mt-8 items-stretch ">
+                      className="bg-red-600 w-2/3 ml-16 text-3xl 
+                      text-white font-bold py-5 px-6 rounded-lg 
+                      my-8  ">
                   explore
                     </button>
                     </Link>

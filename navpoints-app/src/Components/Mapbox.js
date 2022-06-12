@@ -149,7 +149,7 @@ export default function MapBox() {
         
         const {current: map} = useMap();
         
-          map.flyTo({center: navToPosition, zoom: 16});
+          map.flyTo({center: navToPosition, zoom: 19});
         
       }
 
@@ -238,13 +238,13 @@ export default function MapBox() {
     
           <div
           id="eventContainer"
-           className='z-20 container absolute bg-white box-border w-screen  rounded-t-2xl items-center -bottom-2/4' >
+           className='z-20 container absolute bg-white box-border w-screen   rounded-t-2xl items-center top-2/4 mt-8' >
             
 
                     {
                       detailPage ? 
                       <div id="eventDetail">
-                   <div className='flex pl-4 pt-8 '>
+                   <div className='flex '>
                                   <svg xmlns="http://www.w3.org/2000/svg" 
                                   class="h-14 w-14" viewBox="0 0 20 20" 
                                   fill="#DC2625"
@@ -254,19 +254,21 @@ export default function MapBox() {
                                 clip-rule="evenodd" />
                             </svg> </div>
                             <div id="detailContainer"
-                            className='basis-0 grow p-6 mb-8 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
+                            className='basis-0 grow mb-8 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center'>
 
                              <span className='flex '>
                                 <img
                                 className='w-20'          
                                 src={dataEvent[dq].eventIcon}
                                   /> <h1
-                                  className="font-bold text-3xl mt-2 ml-8 text-left ">
+                                  className="font-black text-3xl mt-2 ml-2 text-left ">
                                       {dataEvent[dq].name}
                                     </h1>
                                     </span>
                                   <p
-                                  className="font-bold text-2xl mt-2 ml-4 text-justify overflow-x max-h-30">{dataEvent[dq].description}</p>
+                                  className="font-bold text-2xl mt-2 ml-4 text-justify overflow-y-auto max-h-30
+                                  sm-inset-10
+                                  ">{dataEvent[dq].description}</p>
                               <span className='flex-wrap'>
                                   <p className='font-bold 
                                   text-gray-500 text-lg p-4
@@ -279,8 +281,8 @@ export default function MapBox() {
                                     className="h-16 w-16 bottom-8"
                                     style={{backgroundColor : ""}}
                                      fill={isLiked} 
-                                    viewBox="0 0 24 24" stroke="currentColor" 
-                                    strokeWidth={2}>
+                                    viewBox="0 0 24 24" stroke="red" 
+                                    strokeWidth={1}>
                                       <path strokeLinecap="round" 
                                       strokeLinejoin="round"
                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -292,9 +294,8 @@ export default function MapBox() {
                                     </button>
                                     </span>
                               <button 
-                              class="bg-red-600 w-2/3 text-xl 
-                                text-white font-bold py-4 px-5
-                                rounded-full ">
+                              class="px-4 rounded-lg bg-red-600  
+                              text-white font-bold p-4  my-4">
                                 set waypoint
                                 </button>
                                 </div>
@@ -303,7 +304,7 @@ export default function MapBox() {
                          className=''>   
                            
                            
-                            <div className='flex justify-around pl-4 pt-8 w-full border-b-2 border-gray-200'>
+                            <div className='flex justify-around w-full border-b-2 border-gray-200'>
                               <span>
                                   <Link to="/explore">
                                   <svg xmlns="http://www.w3.org/2000/svg" 
@@ -330,7 +331,7 @@ export default function MapBox() {
                                   </Link> </span>
                                  
                             </div>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-60  overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-150  overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){

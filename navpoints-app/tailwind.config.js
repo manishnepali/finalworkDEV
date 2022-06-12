@@ -7,7 +7,8 @@ module.exports = {
     backgroundImage: {
       'backimg': "url('https://i.ibb.co/FHpgbHT/cover55.jpg')",
       'logoimg': "url('https://i.ibb.co/dKzS64v/navitlogo.png')"
-    }
+    },
+    
   },
   plugins: [
 

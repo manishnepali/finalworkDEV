@@ -110,15 +110,15 @@ alert("set your location on to perform this action")
                         <label className='font-bold text-5xl'> add a new location:</label>
                         <input
                     id="newId"
-                    class="rounded-lg p-4  font-bold border text-gray-800 border-black bg-white my-4 w-2/4" 
+                    class="rounded-lg p-2  font-bold border text-gray-800 border-black bg-white my-4 " 
                       placeholder="nickname"/>
                     <input
                     id="newPlace"
-                    class="rounded-lg p-4  font-bold border text-gray-800 border-black bg-white my-4" 
+                    class="rounded-lg p-2  font-bold border text-gray-800 border-black bg-white my-4" 
                       placeholder="name for this hotspot"/>
                             <input
                     id="description"
-                    class="rounded-lg p-4  font-bold border text-gray-800 border-black bg-white my-4 w-5/6 h-20" 
+                    class="rounded-lg p-2  font-bold border text-gray-800 border-black bg-white my-4 h-20" 
                       placeholder="description"/>
                       <h1 className='font-bold text-xl'>choose a Category</h1>
                       <select id="selcat"
@@ -135,7 +135,7 @@ alert("set your location on to perform this action")
                       add</button>
                     
                      <Link to="/maps"><button 
-                    class="px-4 rounded-lg bg-red-600  
+                    class="px-8 rounded-lg bg-red-600  
                     text-white font-bold p-4  my-4">
                        
                       go back</button></Link> 
