@@ -304,7 +304,7 @@ export default function MapBox() {
                          className=''>   
                            
                            
-                            <div className='flex justify-around w-full border-b-2 border-gray-200'>
+                            <div className='flex justify-around w-full py-4  border-gray-200'>
                               <span>
                                   <Link to="/explore">
                                   <svg xmlns="http://www.w3.org/2000/svg" 
@@ -331,7 +331,7 @@ export default function MapBox() {
                                   </Link> </span>
                                  
                             </div>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-150  overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-96 my-4 overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
