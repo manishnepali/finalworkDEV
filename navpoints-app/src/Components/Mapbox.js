@@ -281,8 +281,8 @@ export default function MapBox() {
                                  
                                  
                               <span className='flex justify-around  w-full'>
-                                  <p className='font-bold 
-                                  text-gray-500 text-sm p-4
+                                  <p className='font-meduim 
+                                  text-black text-lg p-4
                                   md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
                                   <button
                                   className=''
