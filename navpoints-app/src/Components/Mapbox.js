@@ -271,7 +271,7 @@ export default function MapBox() {
                                 src={dataEvent[dq].eventIcon}
                                   /> 
                                    <p
-                                  className="font-bold w- text-l my-4 mx-4 text-justify overflow-y-auto max-h-30
+                                  className="font-meduim w- text-xl my-4 mx-4 text-justify overflow-y-auto max-h-30
                                   md:max-w-md md:p-0">
                                     {dataEvent[dq].description}</p>
                                      </span>
