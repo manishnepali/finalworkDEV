@@ -247,7 +247,8 @@ export default function MapBox() {
                     {
                       detailPage ? 
                       <div id="eventDetail">
-                   <div className='flex '>
+                        
+                   <div className='flex align-middle'>
                                   <svg xmlns="http://www.w3.org/2000/svg" 
                                   class="h-14 w-14 my-4 ml-4" viewBox="0 0 20 20" 
                                   fill="#DC2625"
@@ -255,27 +256,33 @@ export default function MapBox() {
                               <path fill-rule="evenodd"
                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
                                 clip-rule="evenodd" />
-                            </svg> </div>
-                            <div id="detailContainer"
-                            className='basis-0 grow mb-8 mx-2 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center
-                            '>
-
-                             <span className='flex align-baseline w-full'>
-                                <img
-                                className='w-16 sm:w-20'          
-                                src={dataEvent[dq].eventIcon}
-                                  /> <h1
-                                  className="font-black text-3xl mt-2 ml-2 text-left ">
+                            </svg> 
+                            <h1
+                                  className="font-black text-xl pt-6 ml-2 text-left ">
                                       {dataEvent[dq].name}
-                                    </h1>
-                                    </span>
-                                  <p
-                                  className="font-bold text-2xl my-4 mx-4 text-justify overflow-y-auto max-h-30
+                                    </h1></div>
+                            
+
+                             <span className='flex jusify-around  w-full'>
+                                
+                                   
+                                    <img
+                                className='w-20 h-20 my-4 mx-4'          
+                                src={dataEvent[dq].eventIcon}
+                                  /> 
+                                   <p
+                                  className="font-bold w- text-l my-4 mx-4 text-justify overflow-y-auto max-h-30
                                   md:max-w-md md:p-0">
                                     {dataEvent[dq].description}</p>
+                                     </span>
+                          <div id="detailContainer"
+                            className='basis-0 grow  mx-2 text-center md:text-left md:flex md:flex-col md:justify-center md:items-center
+                            '>
+                                 
+                                 
                               <span className='flex justify-around  w-full'>
                                   <p className='font-bold 
-                                  text-gray-500 text-lg p-4
+                                  text-gray-500 text-sm p-4
                                   md:max-w-md md:p-0'>created by {dataEvent[dq].creator}</p>
                                   <button
                                   className=''
@@ -336,7 +343,7 @@ export default function MapBox() {
                                   </Link> </span>
                                  
                             </div>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 h-96 sm:max-h-80 my-4 overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 h-80  my-4 overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
