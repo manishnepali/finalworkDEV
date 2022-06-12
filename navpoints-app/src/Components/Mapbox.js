@@ -185,6 +185,9 @@ export default function MapBox() {
       }
    
 
+      
+      
+
 
   return (
     <div className='relative'>
@@ -193,8 +196,8 @@ export default function MapBox() {
            
              <Route exact path="/maps">
       <Map
-      // 50.84238125027097, 4.3228026337517385
-      initialViewState={viewport}
+       {...viewport}
+       onMove={evt => setViewport(evt.viewport)}
       style={{width: '100vw', height: '60vh'}}
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
       mapboxAccessToken="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
@@ -333,7 +336,7 @@ export default function MapBox() {
                                   </Link> </span>
                                  
                             </div>
-                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 max-h-96 sm:max-h-80 my-4 overflow-auto '>
+                             <ul className='divide-y divide-gray-200 dark:divide-gray-700 h-96 sm:max-h-80 my-4 overflow-auto '>
      
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
@@ -341,7 +344,7 @@ export default function MapBox() {
                                          
                                             
                                            
-                                        <span className='flex flex-row py-8 sm:py-8 justify-around align-baseline ml-4'>
+                                        <span className='flex flex-row py-8 sm:py-8 h-full justify-around align-baseline ml-4'>
 
                                         <img 
                                         
