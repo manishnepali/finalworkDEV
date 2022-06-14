@@ -5,6 +5,7 @@ import Map, { Marker,
   GeolocateControl,
    NavigationControl, 
    useMap,
+   FullscreenControl,
    Layer
 } from 'react-map-gl';
 import {
@@ -29,6 +30,7 @@ import {db,
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
 import { map } from '@firebase/util';
+import  {Resizable} from 'react-resizable';
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -85,7 +87,7 @@ export default function MapBox() {
               latitude: position.coords.longitude,
               zoom: 14
             })
-          console.log("cor loc:", userLattitude, userLongitude, viewport);
+          console.log("cor loc:", userLattitude, userLongitude, viewport, );
           }
           );        
           getData();
@@ -107,13 +109,12 @@ export default function MapBox() {
         const lattDetail = dataEvent[dq].geometry._lat;
         const longDetail = dataEvent[dq].geometry._long;
         setNavToPosition([longDetail, lattDetail])
-        
+      
       
         // Map.flyTo(data[e.target.key].geometry.coordinates)
       }
       const [test, setTest] = useState(true);
-     
-
+   
       function goBackToMap(){
       setDetailPage(false);
       setTest(false);
@@ -129,15 +130,19 @@ export default function MapBox() {
         const payload = {test : "a new event"}
         await setDoc(docRef, payload)
       }
+      const apiKey="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
 
       const [navToPosition, setNavToPosition] = useState([ userLattitude , userLongitude]);
-      function setWaypoint(){
-
+      async function setWaypoint(){
+        return <p> feature comming soon</p>
         setTest(true)
-        const lattDetail = dataEvent[dq].geometry._lat;
-        const longDetail = dataEvent[dq].geometry._long;
-        setNavToPosition([lattDetail, longDetail])
-          
+        // const lattDetail = dataEvent[dq].geometry._lat;
+        // const longDetail = dataEvent[dq].geometry._long;
+        // setNavToPosition([longDetail, lattDetail])
+
+        // await fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/
+        // ${userLattitude},${userLongitude};${lattDetail},${longDetail}?geometries=geojson&access_token=
+        // ${apiKey}`) .then((res) => res.json()).then((res)=>console.log(res));
           // console.log(lattDetail, longDetail);
           // setViewport({
           //   longitude: longDetail,
@@ -183,7 +188,14 @@ export default function MapBox() {
               await updateDoc(docRef, payload)
             }
       }
-   
+      const [list, setList] = useState(true)
+    function toogleList(){
+        if(list === true){
+          setList(false)
+        }else if(list === false){
+          setList(true)
+        }
+    }
 
       
       
@@ -196,7 +208,7 @@ export default function MapBox() {
            
              <Route exact path="/maps">
       <Map
-       {...viewport}
+        initialViewState={viewport}
        onMove={evt => setViewport(evt.viewport)}
       style={{width: '100vw', height: '60vh'}}
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
@@ -204,9 +216,10 @@ export default function MapBox() {
       onViewportChange={viewport}
       
     >
-      
+      <FullscreenControl/>
          <NavigationControl/>
           <GeolocateControl
+          style={{backgroundColor: "red", zIndex:50, top: "20"}}
           ref={geolocateControlRef}
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
@@ -239,11 +252,11 @@ export default function MapBox() {
           
         </Map>
     
-          <div
+        {list ?   <div
           id="eventContainer"
            className='z-20 container absolute bg-white box-border w-screen   rounded-t-2xl items-center top-2/4 mt-8' >
             
-
+           
                     {
                       detailPage ? 
                       <div id="eventDetail">
@@ -306,6 +319,7 @@ export default function MapBox() {
                                     </span>
                                     
                               <button 
+                              onClick={setWaypoint}
                               class="px-4 rounded-lg bg-red-600  
                               text-white text-xl font-bold p-4  my-4">
                                 set waypoint
@@ -327,7 +341,13 @@ export default function MapBox() {
                                 clip-rule="evenodd" />
                             </svg></Link></span>
                      
-                            <span className='w-3/5'></span>
+                            <span className=''>
+                            <svg 
+                            onClick={toogleList}
+                            xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" viewBox="0 0 20 20" fill="red">
+                              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                            </span>
                             <span className='mr-4'>
                                           <Link to="/addLocation">  
                                    
@@ -344,7 +364,7 @@ export default function MapBox() {
                                  
                             </div>
                              <ul className='divide-y divide-gray-200 dark:divide-gray-700 h-96  my-4 overflow-auto '>
-     
+                              
                                     {dataEvent.map((event, index)=>{
                                     if(filterQuery == event.categoryName){
                                       return <li className=''>
@@ -379,17 +399,49 @@ export default function MapBox() {
                                         <h3>{location.type}</h3> 
                                         </span> */}
                                           </li>}
-                                      })}
+                                      })} 
+                                      
+                                   
                               </ul>
                             </div>
                     }
-                
-      
-              
-                   
-   
                     
-                </div>  
+                </div>  : 
+                <div>
+                   <div className='flex justify-around w-full py-2  border-gray-200'>
+                              <span>
+                                  <Link to="/explore">
+                                  <svg xmlns="http://www.w3.org/2000/svg" 
+                                  class="h-14 w-14 ml-4" viewBox="0 0 20 20" 
+                                  fill="#DC2625">
+                              <path fill-rule="evenodd"
+                               d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
+                                clip-rule="evenodd" />
+                            </svg></Link></span>
+                     
+                            <span className=''>
+                            <svg 
+                            onClick={toogleList}
+                            xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" viewBox="0 0 20 20" fill="red">
+                            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+                          </svg>
+                            </span>
+                            <span className='mr-4'>
+                                          <Link to="/addLocation">  
+                                   
+                                              <svg xmlns="http://www.w3.org/2000/svg"
+                                              style={{visibility: mapsOption}}
+                                               className="h-14 w-14" viewBox="0 0 20 20"
+                                               fill="#DC2625">
+                                                  <path fill-rule="evenodd"
+                                                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" 
+                                                   clip-rule="evenodd" />
+                                                </svg>
+                                               
+                                  </Link> </span>
+                                 
+                            </div>
+                  </div>}
                 </Route>
                 <Route exact path="/addLocation">
                   <AddLocation/>

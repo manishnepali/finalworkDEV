@@ -10,14 +10,15 @@ import {
     Link
   } from "react-router-dom";
 import Journal from './Journal';
-  
+import  {Resizable} from 'react-resizable';
+
 export default function Start() {
   localStorage.setItem("mapsOption", false);
   const logged = localStorage.getItem("logged");
   const loggedIn = localStorage.getItem("loggedIn")
   const [exButton, setExButton] = useState(Boolean(loggedIn));
   console.log(exButton);
- 
+  
     return (
         <div className="">
             <Router>
@@ -30,7 +31,7 @@ export default function Start() {
             <img className ="fixed top-10 left-1/4 w-2/4 "
               src="https://i.ibb.co/dKzS64v/navitlogo.png"/>
 
-               
+
                 <div className='container  resize-y bg-white box-border h-2/3 relative top-1/2 w-screen lg:ml-4 md:ml-4 rounded-t-2xl items-center' >
                 <ul className='flex flex-col justify-center  p-4 mx-auto'>
                   <p>account: {logged}</p>
@@ -49,7 +50,7 @@ export default function Start() {
    
                     
                 </div>
-                
+     
             </div> 
             </Route>
              
