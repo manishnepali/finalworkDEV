@@ -221,18 +221,17 @@ export default function MapBox() {
       onViewportChange={viewport}
       
     >
-      <FullscreenControl/>
          <NavigationControl/>
           <GeolocateControl
-          
-          
+          ref={geolocateControlRef} 
           positionOptions={{ enableHighAccuracy: true }}
+          
           trackUserLocation={true}
           showAccuracyCircle={true}
           showUserLocation={true}
           showUserHeading={true}
           position={'top-right'}
-          ></GeolocateControl>
+          >click to get the exact location</GeolocateControl>
 
 
         {dataEvent.map(event=>(
