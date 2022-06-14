@@ -82,6 +82,8 @@ export default function MapBox() {
           navigator.geolocation.getCurrentPosition(function(position) {
             setLattitude(position.coords.longitude);
             setLongituude(position.coords.latitude);
+            setNavToPosition([position.coords.longitude, position.coords.latitude]);
+
             setViewport({
               longitude: position.coords.latitude,
               latitude: position.coords.longitude,
@@ -106,10 +108,11 @@ export default function MapBox() {
         sessionStorage.setItem("detailQuery", toGetDetail);
         setDq(toGetDetail)
         setDetailPage(true)
-        const lattDetail = dataEvent[dq].geometry._lat;
-        const longDetail = dataEvent[dq].geometry._long;
-        setNavToPosition([longDetail, lattDetail])
+        const latNow =  dataEvent[toGetDetail].geometry._lat;
+        const longNow =  dataEvent[toGetDetail].geometry._long;
       
+        setNavToPosition([longNow, latNow]);
+        console.log(latNow, longNow);
       
         // Map.flyTo(data[e.target.key].geometry.coordinates)
       }
@@ -196,6 +199,8 @@ export default function MapBox() {
           setList(true)
         }
     }
+   
+
 
       
       
@@ -208,7 +213,7 @@ export default function MapBox() {
            
              <Route exact path="/maps">
       <Map
-        initialViewState={viewport}
+        {...viewport}
        onMove={evt => setViewport(evt.viewport)}
       style={{width: '100vw', height: '60vh'}}
       mapStyle="mapbox://styles/manishnepali/cl3kqms8x00ab14mfbcd19347"
@@ -219,8 +224,8 @@ export default function MapBox() {
       <FullscreenControl/>
          <NavigationControl/>
           <GeolocateControl
-          style={{backgroundColor: "red", zIndex:50, top: "20"}}
-          ref={geolocateControlRef}
+          
+          
           positionOptions={{ enableHighAccuracy: true }}
           trackUserLocation={true}
           showAccuracyCircle={true}
