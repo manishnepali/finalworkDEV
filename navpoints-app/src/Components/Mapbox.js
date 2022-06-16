@@ -294,7 +294,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                     <button 
                     onClick={backToWay}
                           className="fixed bottom-32 bg-red-600  text-3xl
-                          text-white font-bold py-3 px-4 rounded-lg w-3/4
+                          text-white font-bold py-3 px-4 rounded-lg w-2/4 left-1/4
                           
                             ">
                         go back
