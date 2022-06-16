@@ -19,6 +19,7 @@ import {
   Link,
   useHistory } from "react-router-dom";
 import AddLocation from './Components/AddLocation';
+import AddedByUser from './Components/AddedByUser';
 
 function App() {
   const [isClicked, setClicked] = useState('hidden');

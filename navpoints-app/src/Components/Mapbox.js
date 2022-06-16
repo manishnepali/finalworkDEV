@@ -62,7 +62,7 @@ export default function MapBox() {
           zoom: 14
         });
 
-        //get data from fiebase
+        //get data from firebase
         const getData = async() =>{
           const q = query(collection(db, "geo_location"));
 

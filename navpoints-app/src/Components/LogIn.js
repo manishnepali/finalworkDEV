@@ -9,10 +9,12 @@ import {
   Route,
   Link,
   useHistory } from "react-router-dom";
+  import AddedByUser from "./AddedByUser";
 
 
 function Login() {
   const navigate = useHistory();
+  const [seeAdded,setSeeAddded] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -26,6 +28,7 @@ function Login() {
     logout(auth);
     console.log("out",localStorage.getItem("loggedIn"))
   };
+
   useEffect( () => {
     if (loading) {
       // maybe trigger a loading screen
@@ -47,6 +50,11 @@ function Login() {
       // navigate.push("/");
     };
   }, [user, loading]);
+
+  function goToAdded(){
+    if(seeAdded == false){setSeeAddded(true)}else{setSeeAddded(false);}
+    
+  }
   return (
   
     <div id="login" 
@@ -59,10 +67,13 @@ function Login() {
         src={logo}/>
        
         { isLoggedIn ?
+        
         <div
-        className='basis-0 grow p-6 mb-8 text-center
+        className='basis-0 grow p-6 text-center
         w-100
          md:text-left md:flex md:flex-col md:justify-center md:items-center'>
+          
+          
          <div
          className="w-full flex justify-around">
             <br/>
@@ -78,12 +89,12 @@ function Login() {
         {user.email}
 
         </h1>
+        
+       
+       
         </div>
         <Link to="/explore">
-        <button 
-        
-        
-
+        <button
         className="px-8 rounded-lg bg-red-600  
         text-white font-bold p-4  my-4  "
         >Let's start</button>
@@ -92,17 +103,36 @@ function Login() {
         <button 
         className="px-8 rounded-lg bg-red-600  
         text-white font-bold p-4  my-4  "
-        onClick={signOut}>Log out</button> </div> : 
+        onClick={signOut}>Log out</button> 
+        {seeAdded?<h1
+        className="font-bold  text-l text-black  w-full "
+        onClick={goToAdded}>close added</h1>:
+        <h1
+        className="font-bold  text-l text-black  w-full "
+        onClick={goToAdded}>see added</h1>}
+        
+        
+        
+        
+        </div> : 
         <div>
            <button className="flex justify-around px-8 rounded-lg bg-red-600  
           text-white font-bold p-4 mx-4  my-4"
             onClick={signInWithGoogle}>
             <h1> Login with Google</h1>
             </button>
+            
         </div>
         }
+
+{seeAdded?
+        <div>
+          <AddedByUser></AddedByUser>
+
+         </div>:<div
+        > </div>}
       </div>
-      
+
       
     </div>
   );

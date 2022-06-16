@@ -79,6 +79,7 @@ const addEventLoc= async (e)=>{
                     },
                   eventIcon: selectedCategory,
                 creator: username,
+                creatorId : userId,
               categoryName: selectedCategoryname,
             description: newDescription,
           likes:0 }
