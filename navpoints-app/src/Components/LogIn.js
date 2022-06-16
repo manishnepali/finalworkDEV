@@ -22,11 +22,11 @@ function Login() {
   const signOut = () => {
     localStorage.setItem("logged","logged out");
     localStorage.setItem("loggedIn", "");
-  
+    setSeeAddded(false);
     setIsLoggedIn(false);
 
     logout(auth);
-    console.log("out",localStorage.getItem("loggedIn"))
+    console.log("out",localStorage.getItem("loggedIn"));
   };
 
   useEffect( () => {
@@ -101,7 +101,7 @@ function Login() {
         </Link>
         <br/>
         <button 
-        className="px-8 rounded-lg bg-red-600  
+        className="fixed top-0 right-0 px-8 mx-4 rounded-lg bg-red-600  
         text-white font-bold p-4  my-4  "
         onClick={signOut}>Log out</button> 
         {seeAdded?<h1

@@ -59,6 +59,7 @@ export default function AddedByUser() {
                                     </span>
                                     <p className='text-right font-bold text-xs'>{data.likes} times liked by explorers </p>
                                     </li>
+                                    
                              })}</ul> 
         </div>
      

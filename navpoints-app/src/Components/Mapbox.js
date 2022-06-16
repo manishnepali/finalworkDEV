@@ -38,6 +38,12 @@ mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worke
 export default function MapBox() {
 
 
+const loggedIn = localStorage.getItem("loggedIn")
+const [showPage, setShowPage] = useState(Boolean(loggedIn));
+
+
+
+
   const[ mapsOption, setOption ] = useState("visible");
 
       const imgg = "https://cdn.iconscout.com/icon/free/png-256/bar-606-1106181.png";
@@ -203,11 +209,14 @@ export default function MapBox() {
 
 
   return (
+    
     <div className='relative'>
  <Router>
             <Switch>
            
              <Route exact path="/maps">
+             {showPage ? <div>
+                
       <Map
         {...viewport}
        onMove={evt => setViewport(evt.viewport)}
@@ -442,6 +451,10 @@ export default function MapBox() {
                                  
                             </div>
                   </div>}
+                  
+                  </div>: <div>  <h1 className="font-bold text-5xl mt-28">
+                     Log in to explore areas around you
+                     </h1></div>}
                 </Route>
                 <Route exact path="/addLocation">
                   <AddLocation/>

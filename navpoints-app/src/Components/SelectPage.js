@@ -87,6 +87,10 @@ useEffect(()=>{
 },[])
 
 const [bgColor, isBgColor] = useState(false);
+
+const loggedIn = localStorage.getItem("loggedIn")
+const [showPage, setShowPage] = useState(Boolean(loggedIn));
+
     return (
         <div className="SelectPage">
             <Router>
@@ -94,6 +98,7 @@ const [bgColor, isBgColor] = useState(false);
              
            
              <Route exact path="/explore">
+              {showPage?
             <div className='bg-backimg bg-center bg-cover h-screen md:flex overflow-hidden'>
             
                
@@ -151,7 +156,10 @@ const [bgColor, isBgColor] = useState(false);
                     </Link>
                 </div>
                 
-            </div>       
+            </div>:
+            <div>  <h1 className="font-bold text-5xl mt-28">
+            Log in to explore areas around you
+            </h1></div>}
             </Route>
              
            
