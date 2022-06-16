@@ -6,6 +6,7 @@ import Map, { Marker,
    NavigationControl, 
    useMap,
    FullscreenControl,
+   Source,
    Layer
 } from 'react-map-gl';
 import {
@@ -124,6 +125,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
       setDetailPage(false);
       setTest(false);
       setBeforeLike(true);
+      setLayer(false);
       setLiked("none")
       setNavToPosition([ userLattitude , userLongitude])
       }
@@ -136,24 +138,25 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
         await setDoc(docRef, payload)
       }
       const apiKey="pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw"
-
+      const [directions, setDirections] = useState([]);
+      const [layer, setLayer] = useState(false)
       const [navToPosition, setNavToPosition] = useState([ userLattitude , userLongitude]);
-      async function setWaypoint(){
-        return <p> feature comming soon</p>
+       async function setWaypoint(){
         setTest(true)
-        // const lattDetail = dataEvent[dq].geometry._lat;
-        // const longDetail = dataEvent[dq].geometry._long;
+        
+        const lattDetail = dataEvent[dq].geometry._lat;
+        const longDetail = dataEvent[dq].geometry._long;
         // setNavToPosition([longDetail, lattDetail])
 
-        // await fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/
-        // ${userLattitude},${userLongitude};${lattDetail},${longDetail}?geometries=geojson&access_token=
-        // ${apiKey}`) .then((res) => res.json()).then((res)=>console.log(res));
-          // console.log(lattDetail, longDetail);
+         await fetch(`https://api.mapbox.com/directions/v5/mapbox/walking/${userLattitude},${userLongitude};${longDetail},${lattDetail}?geometries=geojson&access_token=pk.eyJ1IjoibWFuaXNobmVwYWxpIiwiYSI6ImNsM2h4Y3J3cTFnOWQzZXByODNobTZmZHcifQ.S-NfRKjOs4vOaW8jZnOmRw`) 
+         .then((res) => res.json()).catch((res)=>console.log(res.json())).then((res)=>setDirections(res) );
+           console.log("d",directions);
           // setViewport({
           //   longitude: longDetail,
           //   latitude: lattDetail,
           //   zoom: 14
           // })
+          setLayer(true)
         }
       function NavigateButton() {
         
@@ -202,7 +205,12 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
         }
     }
    
-
+    const layerStyle =   {
+      id: "rivers",
+      type: "line",
+      paint: {"line-color": "#ffc0cb"}
+  }
+    
 
       
       
@@ -256,7 +264,13 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                       </Marker>
                 ) )} 
                 <NavigateButton/>
-         
+
+                {layer?
+                 <Source id="my-data" type="geojson" data={directions.routes[0].geometry}>
+                 <Layer {...layerStyle} />
+               </Source>: <></>
+                }
+               
        
           
         </Map>
@@ -452,7 +466,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                             </div>
                   </div>}
                   
-                  </div>: <div>  <h1 className="font-bold text-5xl mt-28">
+                  </div>: <div>  <h1 className="font-bold text-5xl mx-4 mt-28">
                      Log in to explore areas around you
                      </h1></div>}
                 </Route>

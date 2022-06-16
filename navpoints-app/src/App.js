@@ -31,17 +31,17 @@ function navigationEffect(e){
   const getNav = e.target.id;
   console.log(getNav);
   if(getNav == "1"){
-    setSetup("yellow");
+    setSetup("#ffff9f");
     setMaps("white");
     setProfile("white");
   }else if(getNav == "2"){
     setSetup("white");
-    setMaps("yellow");
+    setMaps("#ffff9f");
     setProfile("white");
   }else if(getNav == "3"){
     setSetup("white");
     setMaps("white");
-    setProfile("yellow");
+    setProfile("#ffff9f");
   }else{
     setSetup("white");
     setMaps("white");
@@ -86,7 +86,7 @@ function navigationEffect(e){
         className="z-40 fixed bottom-0 flex  w-full bg-red-600 rounded-t-3xl">
       
           <div class="flex justify-around w-full">
-        <span class="flex flex-col items-center  p-2">
+        <span class="flex flex-col items-center  px-2 pt-2">
         <Link to='/explore'>
            <svg 
            style={{fill: setup}}
@@ -114,7 +114,7 @@ function navigationEffect(e){
                 </span>
                 <span
                
-                class="flex flex-col items-center p-2">
+                class="flex flex-col items-center px-2 pt-2">
                 <Link to='/maps'>
                   <svg
                   onClick={navigationEffect}
@@ -141,7 +141,7 @@ function navigationEffect(e){
 									explore
 								</p></Link>
                 </span>
-                <span class="flex flex-col items-center p-2">
+                <span class="flex flex-col items-center px-2 pt-2">
                <Link to="/login">
                 <svg 
                 style={{fill: profile}}

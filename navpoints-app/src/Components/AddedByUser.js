@@ -43,7 +43,7 @@ export default function AddedByUser() {
       <div id="addedByUser"  
       className='z-20 container  bg-white box-border w-full   rounded-b-2xl items-center' >
       
-                               <ul className='divide-y divide-gray-200 dark:divide-gray-700  overflow-y-auto h-28'>  
+                               <ul className='divide-y divide-gray-200 dark:divide-gray-700  overflow-y-auto h-40'>  
                              {dataEvent.map((data,i)=>{
                                 if(data.creator == username)
                                 return <li>

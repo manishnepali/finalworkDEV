@@ -157,7 +157,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                 </div>
                 
             </div>:
-            <div>  <h1 className="font-bold text-5xl mt-28">
+            <div>  <h1 className="font-bold text-5xl mx-4 mt-28">
             Log in to explore areas around you
             </h1></div>}
             </Route>
