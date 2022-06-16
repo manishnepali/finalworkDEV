@@ -157,6 +157,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
           //   zoom: 14
           // })
           setLayer(true)
+          setNavToPosition([ userLattitude , userLongitude])
         }
       function NavigateButton() {
         
@@ -208,7 +209,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
     const layerStyle =   {
       id: "rivers",
       type: "line",
-      paint: {"line-color": "#ffc0cb"}
+      paint: {"line-color": "#ffc0cb", 'line-width': 8}
   }
     
 
