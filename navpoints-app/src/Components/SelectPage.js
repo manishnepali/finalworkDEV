@@ -7,7 +7,7 @@ import {
     Link
   } from "react-router-dom";
 import MapBox from "./Mapbox";
-import Login from "../Backend/LogIn";
+import Login from "./LogIn";
 import {db, 
   collection,
    getDocs,

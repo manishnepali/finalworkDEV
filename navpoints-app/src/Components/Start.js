@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import MapBox from './Mapbox';
 import SelectPage from './SelectPage'
-import Login from '../Backend/LogIn';
+import Login from './LogIn';
 
 import {
     BrowserRouter as Router,

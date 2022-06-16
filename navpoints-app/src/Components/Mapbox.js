@@ -29,8 +29,6 @@ import {db,
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
 import { map } from '@firebase/util';
-
-
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
