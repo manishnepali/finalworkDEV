@@ -159,6 +159,10 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
           setLayer(true)
           setNavToPosition([ userLattitude , userLongitude])
         }
+
+        function backToWay(){
+          setLayer(false);
+        }
       function NavigateButton() {
         
         const {current: map} = useMap();
@@ -285,6 +289,18 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                       detailPage ? 
                       <div id="eventDetail">
                         
+                   { layer ? <div
+                   >
+                    <button 
+                    onClick={backToWay}
+                          className="fixed bottom-32 bg-red-600  text-3xl
+                          text-white font-bold py-3 px-4 rounded-lg w-3/4
+                          
+                            ">
+                        go back
+                          </button>
+                   </div>:
+                   <div>
                    <div className='flex align-middle'>
                                   <svg xmlns="http://www.w3.org/2000/svg" 
                                   class="h-14 w-14 my-4 ml-4" viewBox="0 0 20 20" 
@@ -294,10 +310,10 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z"
                                 clip-rule="evenodd" />
                             </svg> 
-                            <h1
+                          <h1
                                   className="font-black text-xl pt-6 ml-2 text-left ">
                                       {dataEvent[dq].name}
-                                    </h1></div>
+                                    </h1></div> 
                             
 
                              <span className='flex jusify-around  w-full'>
@@ -349,6 +365,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                                 set waypoint
                                 </button>
                                 </div>
+                                </div>}
                         </div>:
                          <div id="eventList"
                          className=''>   
