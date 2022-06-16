@@ -10,7 +10,6 @@ import {
     Link
   } from "react-router-dom";
 import Journal from './Journal';
-import  {Resizable} from 'react-resizable';
 
 export default function Start() {
   localStorage.setItem("mapsOption", false);

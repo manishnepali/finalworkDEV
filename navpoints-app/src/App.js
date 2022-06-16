@@ -6,7 +6,6 @@ import Journal from './Components/Journal';
 import SelectPage from './Components/SelectPage';
 import Slider from './Components/Slider';
 import { useState } from 'react';
-import CameraPage from './Components/CameraPage';
 import LogIn from './Backend/LogIn';
 import home from "./Components/Icons/home.svg"
 import menu from "./Components/Icons/menu-burger.svg"

@@ -14,7 +14,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import CameraPage from './CameraPage';
 import SelectPage from './SelectPage';
 import eye from './Icons/eye.svg'
 import {db, 
@@ -30,7 +29,6 @@ import {db,
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
 import { map } from '@firebase/util';
-import  {Resizable} from 'react-resizable';
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -450,9 +448,7 @@ export default function MapBox() {
                 <Route exact path="/addLocation">
                   <AddLocation/>
                 </Route>
-                <Route exact path="/camera">
-                <CameraPage/>
-                </Route>
+                
                 <Route exact path="/explore">
                 <SelectPage/>
                 </Route>
