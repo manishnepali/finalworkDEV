@@ -291,6 +291,11 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                         
                    { layer ? <div
                    >
+                    {/* <h1
+                     className="fixed bottom-44  text-3xl
+                     font-bold py-3 px-4 
+                     
+                       ">distance: {directions.routes[0].distance}</h1> */}
                     <button 
                     onClick={backToWay}
                           className="fixed bottom-32 bg-red-600  text-3xl
@@ -357,7 +362,6 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                                     
                                     </button>
                                     </span>
-                                    
                               <button 
                               onClick={setWaypoint}
                               class="px-4 rounded-lg bg-red-600  
