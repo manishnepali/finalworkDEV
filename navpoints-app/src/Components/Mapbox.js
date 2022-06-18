@@ -121,7 +121,7 @@ const username = localStorage.getItem("username");
       
         setNavToPosition([longNow, latNow]);
         console.log(latNow, longNow);
-       if(dataEvent[dq].likedBy == null || !dataEvent[dq].likedBy.includes(username)){
+       if(dataEvent[dq].likedBy == 'undefined' || !dataEvent[dq].likedBy.includes(username)){
         setLiked("none");
        }else if(dataEvent[dq].likedBy.includes(username)){
         setLiked("red");
