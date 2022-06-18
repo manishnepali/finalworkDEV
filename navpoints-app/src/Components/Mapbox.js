@@ -289,18 +289,20 @@ const[popup, setpopup] = useState(null)
                                 src={event.eventIcon}></img>
                                 
                         <h1 className='font-medium  text-l text-black '>{event.name}</h1>
-                        {popup && (
-                    <Popup longitude={popup.geometry._long} latitude={popup.geometry._lat}
-                      anchor="bottom"
-                      onClose={()=>setpopup(null)}>
-                      {popup.name}, {popup.description}
-                    </Popup>)}
+                        
+                   
                         </div>
                       </Marker>
                    
                 ) )} 
                 
+              {popup && (<Popup longitude={popup.geometry._long} latitude={popup.geometry._lat}
+                      anchor="bottom"
+                      
 
+                      onClose={()=>setpopup(null)}>
+                      {popup.name}, {popup.description}
+                    </Popup>)}
                 
                 <NavigateButton/>
 
