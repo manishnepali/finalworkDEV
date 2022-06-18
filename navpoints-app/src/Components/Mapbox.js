@@ -79,7 +79,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
             id: doc.id
           }));
           setDataEvent(dataSet);
-          console.log(dataSet)
+          // console.log(dataSet)
         } 
         useEffect(()=>{
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -188,7 +188,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
               setLiked("red");
               setBeforeLike(false);
               const docRef = doc(db, "geo_location", dataEvent[dq].id);
-              const payload = {likes : countLikes}
+              const payload = {likes : newLiked + 1}
               await updateDoc(docRef, payload)
       
             }else if(isLiked == "red" && beforeLike == false){

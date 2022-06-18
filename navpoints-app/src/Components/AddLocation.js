@@ -42,8 +42,9 @@ const userId = localStorage.getItem("userId");
    setData(dataSet);
    console.log(dataSet)
  } 
- 
-
+ const randomNumber = Math.floor(Math.random() * 9999999);
+    console.log(randomNumber)
+randomNumber.toString();
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(function(position) {
       setLattitude(position.coords.latitude);
@@ -62,15 +63,17 @@ const userId = localStorage.getItem("userId");
 const [newEvent, setNewEvent] = useState([])
 const addEventLoc= async (e)=>{
   e.preventDefault();
+  
   const select = document.getElementById("selcat");
   const selectedCategory = select.options[select.selectedIndex].value;
   const selectedCategoryname = select.options[select.selectedIndex].text;
   const newDescription = document.getElementById("description").value;
   console.log(selectedCategory);
   const newPlaceName = document.getElementById("newPlace").value;
-  const newPlaceId = document.getElementById("newId").value;
+  const newPlaceId = document.getElementById("newId").textContent;
 
-  console.log(newPlaceName);
+
+  console.log(newPlaceId);
  const docRef = doc(db, "geo_location", newPlaceId);
   const payload = {name : newPlaceName,
                     geometry:{
@@ -110,10 +113,12 @@ alert("set your location on to perform this action")
                 
 
                         <label className='font-bold text-5xl'> add a new location:</label>
-                        <input
+                        <p>id:</p><p
                     id="newId"
-                    class="rounded-lg p-2  font-bold border text-gray-800 border-black bg-white my-4 " 
-                      placeholder="nickname"/>
+                    class="font-bold text-gray-800 " 
+                    >
+                     {randomNumber} </p>
+
                     <input
                     id="newPlace"
                     class="rounded-lg p-2  font-bold border text-gray-800 border-black bg-white my-4" 
