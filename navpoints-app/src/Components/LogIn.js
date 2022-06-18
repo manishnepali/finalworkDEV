@@ -104,12 +104,33 @@ function Login() {
         className="fixed top-0 right-0 px-8 mx-4 rounded-lg bg-red-600  
         text-white font-bold p-4  my-4  "
         onClick={signOut}>Log out</button> 
-        {seeAdded?<h1
+        {seeAdded?
+        <div>
+        <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
+  <input 
+   onClick={goToAdded}
+  type="checkbox" value="" id="default-toggle" class="sr-only peer"/>
+  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-100 dark:peer-focus:ring-red-400 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-red-600"/>
+  <span class="ml-3 text-sm font-medium text-gray-200 dark:text-gray-300"> <h1
         className="font-bold  text-l text-black  w-full "
-        onClick={goToAdded}>close added</h1>:
-        <h1
+       >close added</h1></span>
+</label>
+        
+        </div>:
+        <div>
+       
+       
+        <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
+  <input 
+   onClick={goToAdded}
+  type="checkbox" value="" id="default-toggle" class="sr-only peer"/>
+  <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-100 dark:peer-focus:ring-white rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-red-600"/>
+  <span class="ml-3 text-sm font-medium text-gray-200 dark:text-gray-300"> <h1
         className="font-bold  text-l text-black  w-full "
-        onClick={goToAdded}>see added</h1>}
+       >see added</h1></span>
+</label>
+        
+        </div>}
         
         
         
