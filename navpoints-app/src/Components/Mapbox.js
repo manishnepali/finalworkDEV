@@ -7,7 +7,8 @@ import Map, { Marker,
    useMap,
    FullscreenControl,
    Source,
-   Layer
+   Layer,
+   Popup
 } from 'react-map-gl';
 import {
   BrowserRouter as Router,
@@ -230,9 +231,8 @@ const username = localStorage.getItem("username");
       type: "line",
       paint: {"line-color": "red", 'line-width': 8}
   }
-    
-
-      
+const[popup, setpopup] = useState(null)
+  
       
 
 
@@ -272,7 +272,16 @@ const username = localStorage.getItem("username");
                     key={event.id}
                     longitude={event.geometry._long}
                       latitude={event.geometry._lat}
-                      scale={2}>
+                      scale={2}
+                      onClick={e=>{
+                        
+                      e.originalEvent.stopImmediatePropagation();
+                    setpopup(event);
+                    console.log(popup);
+                      }}
+                      
+                      >
+                       
                         <div
                         className="flex flex-col items-center w-20 h-20">
                         <img 
@@ -280,9 +289,19 @@ const username = localStorage.getItem("username");
                                 src={event.eventIcon}></img>
                                 
                         <h1 className='font-medium  text-l text-black '>{event.name}</h1>
+                        {popup && (
+                    <Popup longitude={popup.geometry._long} latitude={popup.geometry._lat}
+                      anchor="bottom"
+                      onClose={()=>setpopup(null)}>
+                      {popup.name}, {popup.description}
+                    </Popup>)}
                         </div>
                       </Marker>
+                   
                 ) )} 
+                
+
+                
                 <NavigateButton/>
 
                 {layer?
