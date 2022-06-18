@@ -10,11 +10,14 @@ import {
   Link,
   useHistory } from "react-router-dom";
   import AddedByUser from "./AddedByUser";
+  import LikedByUser from "./LikedByUser";
 
 
 function Login() {
   const navigate = useHistory();
   const [seeAdded,setSeeAddded] = useState(false);
+  const [seeLiked,setSeeLiked] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -53,6 +56,10 @@ function Login() {
 
   function goToAdded(){
     if(seeAdded == false){setSeeAddded(true)}else{setSeeAddded(false);}
+    
+  }
+  function goToLiked(){
+    if(seeLiked == false){setSeeLiked(true)}else{setSeeLiked(false);}
     
   }
   return (
@@ -106,10 +113,10 @@ function Login() {
         onClick={signOut}>Log out</button> 
         {seeAdded?
         <div>
-        <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
+        <label for="added" class="inline-flex relative items-center cursor-pointer">
   <input 
    onClick={goToAdded}
-  type="checkbox" value="" id="default-toggle" class="sr-only peer"/>
+  type="checkbox" value="" id="added" class="sr-only peer"/>
   <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-100 dark:peer-focus:ring-red-400 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-red-600"/>
   <span class="ml-3 text-sm font-medium text-gray-200 dark:text-gray-300"> <h1
         className="font-bold  text-l text-black  w-full "
@@ -120,10 +127,10 @@ function Login() {
         <div>
        
        
-        <label for="default-toggle" class="inline-flex relative items-center cursor-pointer">
+        <label for="added" class="inline-flex relative items-center cursor-pointer">
   <input 
    onClick={goToAdded}
-  type="checkbox" value="" id="default-toggle" class="sr-only peer"/>
+  type="checkbox" value="" id="added" class="sr-only peer"/>
   <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-100 dark:peer-focus:ring-white rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-red-600"/>
   <span class="ml-3 text-sm font-medium text-gray-200 dark:text-gray-300"> <h1
         className="font-bold  text-l text-black  w-full "
@@ -131,6 +138,30 @@ function Login() {
 </label>
         
         </div>}
+
+        {seeLiked?
+        <div>
+             <label for="liked" class="inline-flex relative items-center cursor-pointer">
+              <input 
+              onClick={goToLiked}
+              type="checkbox" value="" id="liked" class="sr-only peer"/>
+              <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-100 dark:peer-focus:ring-red-400 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-red-600"/>
+              <span class="ml-3 text-sm font-medium text-gray-200 dark:text-gray-300"> <h1
+                    className="font-bold  text-l text-black  w-full "
+                  >close liked</h1></span>
+            </label>
+        </div>:
+        <div>
+           <label for="liked" class="inline-flex relative items-center cursor-pointer">
+          <input 
+          onClick={goToLiked}
+          type="checkbox" value="" id="liked" class="sr-only peer"/>
+          <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-100 dark:peer-focus:ring-red-400 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-100 peer-checked:bg-red-600"/>
+          <span class="ml-3 text-sm font-medium text-gray-200 dark:text-gray-300"> <h1
+                className="font-bold  text-l text-black  w-full "
+              >see liked</h1></span>
+        </label>
+          </div>}
         
         
         
@@ -152,6 +183,12 @@ function Login() {
 
          </div>:<div
         > </div>}
+
+        {seeLiked ? 
+        <div>
+          <LikedByUser/>
+          </div>:
+          <div></div>}
       </div>
 
       
