@@ -18,6 +18,7 @@ import {
   setDoc,
   arrayUnion,
   updateDoc,
+  arrayRemove,
   doc
 } from "firebase/firestore";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -103,5 +104,6 @@ export {
   logout,
   setDoc,
   arrayUnion,
+  arrayRemove,
   doc
 };

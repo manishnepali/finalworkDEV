@@ -26,6 +26,7 @@ import {db,
      addDoc,
      updateDoc,
      arrayUnion,
+     arrayRemove,
     doc} from "../Backend/firebase"
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
@@ -43,6 +44,7 @@ const loggedIn = localStorage.getItem("loggedIn")
 const [showPage, setShowPage] = useState(Boolean(loggedIn));
 
 
+const username = localStorage.getItem("username");
 
 
   const[ mapsOption, setOption ] = useState("visible");
@@ -50,7 +52,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
       const imgg = "https://cdn.iconscout.com/icon/free/png-256/bar-606-1106181.png";
         console.log(data)
       const geo = data.geometry;
-          
+          console.log(localStorage.getItem("username"));
         const geolocateControlRef = useCallback((ref) => {
           if (ref) {
             // Activate as soon as the control is loaded
@@ -81,6 +83,9 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
           setDataEvent(dataSet);
           // console.log(dataSet)
         } 
+      
+
+
         useEffect(()=>{
           navigator.geolocation.getCurrentPosition(function(position) {
             setLattitude(position.coords.longitude);
@@ -96,7 +101,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
           }
           );        
           getData();
-          console.log("event catagory",dataEvent)
+          console.log("location",dataEvent);
         },[])
   
         
@@ -116,6 +121,11 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
       
         setNavToPosition([longNow, latNow]);
         console.log(latNow, longNow);
+       if(dataEvent[dq].likedBy == null || !dataEvent[dq].likedBy.includes(username)){
+        setLiked("none");
+       }else if(dataEvent[dq].likedBy.includes(username)){
+        setLiked("red");
+       }
       
         // Map.flyTo(data[e.target.key].geometry.coordinates)
       }
@@ -181,23 +191,28 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
         const newLiked = parseInt(dataEvent[dq].likes);
         console.log(newLiked)
 
-            if(isLiked == "none" && beforeLike == true){
+            if(isLiked == "none"){
               setLikes(newLiked+1);
               console.log(countLikes) 
 
               setLiked("red");
               setBeforeLike(false);
               const docRef = doc(db, "geo_location", dataEvent[dq].id);
-              const payload = {likes : newLiked + 1}
+              const payload = {likes : dataEvent[dq].likes + 1,
+              likedBy: arrayUnion(username)}
+              console.log(payload)
               await updateDoc(docRef, payload)
+            
       
-            }else if(isLiked == "red" && beforeLike == false){
+            }else if(isLiked == "red" && dataEvent[dq].likedBy.includes(username)){
               setLikes(countLikes-1); 
               console.log(countLikes) 
               setLiked("none");
               setBeforeLike(true);
               const docRef = doc(db, "geo_location", dataEvent[dq].id);
-              const payload = {likes : countLikes}
+              const payload = {likes : dataEvent[dq].likes - 1,
+              likedBy: arrayRemove(username)}
+              console.log(payload)
               await updateDoc(docRef, payload)
             }
       }
@@ -211,9 +226,9 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
     }
    
     const layerStyle =   {
-      id: "rivers",
+      id: "routes",
       type: "line",
-      paint: {"line-color": "#ffc0cb", 'line-width': 8}
+      paint: {"line-color": "red", 'line-width': 8}
   }
     
 
