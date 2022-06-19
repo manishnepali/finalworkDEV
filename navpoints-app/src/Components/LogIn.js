@@ -84,9 +84,9 @@ the localStorage to logged in and sets the isLoggedIn state to true. */
     className="flex ">
        
        
-        <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-12 p-20">
+        <div className=" h-full w-full  -bottom-20bg-red-100 container flex-col mt-24 p-20">
         <img 
-        className="w-36 mx-8"
+        className="fixed top-12 left-1/3 w-2/6 drop-shadow-md"
         src={logo}/>
        
         { isLoggedIn ?
@@ -124,8 +124,8 @@ the localStorage to logged in and sets the isLoggedIn state to true. */
         </Link>
         <br/>
         <button 
-        className="fixed top-0 right-0 px-8 mx-4 rounded-lg bg-red-600  
-        text-white font-bold p-4  my-4  "
+        className="fixed bottom-20 right-0 px-8 mx-4 rounded-lg bg-red-600  
+        text-white font-bold p-2  my-2  "
         onClick={signOut}>Log out</button> 
        
       

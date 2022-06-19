@@ -18,6 +18,18 @@ export default function Start() {
   const [exButton, setExButton] = useState(Boolean(loggedIn));
   console.log(exButton);
   
+  const [popupDownload,setPopupDownload] = useState(true)
+/**
+ * If the popupDownload state is true, then set the popupDownload state to false
+ */
+function showPopup(){
+
+  if(popupDownload === true){
+    setPopupDownload(false);
+  }
+}
+
+
     return (
         <div className="">
             <Router>
@@ -27,7 +39,7 @@ export default function Start() {
              <Route exact path="/">
             
             <div className='bg-backimg bg-center bg-cover  h-screen overflow-hidden'>
-            <img className ="fixed top-10 left-1/3 w-2/6 "
+            <img className ="fixed top-10 left-1/3 w-2/6 drop-shadow-md"
               src="https://i.ibb.co/dKzS64v/navitlogo.png"/>
 
 
@@ -45,7 +57,28 @@ export default function Start() {
                         ">
                      Let's start 
                        </button></Link> </li>:
-                        <li> <Link to="/login">
+                        <li> 
+                          {popupDownload?
+                           <div className="fixed transition  ease-in duration-1000 top-36 drop-shadow-md container 
+                           bg-white  w-3/4 ml-1/4 p-2 rounded-xl" >
+                          
+                           <br/>
+                           <span className="w-3/4 h-28 font-bold mx-8 text-justify">
+                          
+                             <h1 className=' text-l'>If you are using the browser version download the application for the best experince on your 
+                             device, by adding it on to your homescreen.</h1>
+                             </span>
+                             <button 
+                             onClick={showPopup}
+                           className="bg-red-600  text-xl
+                           text-white font-bold  rounded-lg w-1/4
+                           float-right
+                             ">
+                         okay
+                           </button>
+                             </div>:
+                          <></>}
+                            <Link to="/login">
                           <button 
                           className="bg-red-600  text-3xl
                           text-white font-bold py-3 px-4 rounded-lg w-full
