@@ -12,30 +12,22 @@ import {
   Link,
   NavLink
 } from "react-router-dom";
-import SelectPage from './SelectPage';
 
 export default function Nav() {
-  let activeStyle = {
-    backgroundColor: "red",
-  };
-  let notActive = {
-    backgroundColor: "green",
-  }
+
  
 
     return (
-      <div id="nav" className=''>
-       
-          <div id="navbar"
+     
+        <div id="navbar"
         className="z-40 fixed bottom-0 flex  w-full bg-red-600 rounded-t-3xl">
       
           <div class="flex justify-around w-full">
         <span class="flex flex-col items-center  px-2 pt-2">
-
-        <NavLink to="/explore"           
-         style={({ isActive }) =>
-              isActive ? activeStyle : notActive
-            }>
+        <NavLink to="/explore"  
+             style={isActive => ({
+              backgroundColor: isActive ? "black" : "#DC2625"
+            })}>
            <svg 
            id="1"
            xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +40,7 @@ export default function Nav() {
            0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 
            2 0 010-3.464V4a1 1 0 011-1z" />
         </svg></NavLink>
-                <NavLink to='/explore'>
+                <NavLink  to='/explore'>
 								<p
                 id="1"
                 class="font-bold text-white text-l mb-2 transition-all duration-200">
@@ -58,10 +50,11 @@ export default function Nav() {
                 <span
                
                 class="flex flex-col items-center px-2 pt-2">
-                <NavLink to='/maps'
-                style={({ isActive }) =>
-                isActive ? activeStyle : notActive
-              }>
+                <NavLink  to="/maps"
+        
+               style={isActive => ({
+                backgroundColor: isActive ? "black" : "#DC2625"
+              })}>
                   <svg
                     id="2"
                   xmlns="http://www.w3.org/2000/svg" 
@@ -74,7 +67,7 @@ export default function Nav() {
                     3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1
                      1 0 0018 16V6a1 1 0 00-.293-.707z" clip-rule="evenodd" />
                 </svg></NavLink>
-							  <NavLink to='/maps'>
+							  <NavLink  to='/maps'>
                   	<p   
                     
                     id="2"
@@ -83,10 +76,10 @@ export default function Nav() {
 								</p></NavLink>
                 </span>
                 <span class="flex flex-col items-center px-2 pt-2">
-               <NavLink to="/login"
-               style={({ isActive }) =>
-               isActive ? activeStyle : notActive
-             }>
+               <NavLink  to="/login"
+              style={isActive => ({
+                backgroundColor: isActive ? "black" : "#DC2625"
+              })}>
                 <svg 
                   id="3"
                 xmlns="http://www.w3.org/2000/svg" 
@@ -97,7 +90,7 @@ export default function Nav() {
                     d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                      clip-rule="evenodd" />
                   </svg></NavLink>
-								<NavLink to="/login">
+								<NavLink  to="/login">
                    <p 
                     id="3" 
                    class="font-bold text-white text-l mb-2 transition-all duration-200">
@@ -105,9 +98,9 @@ export default function Nav() {
 								</p></NavLink>
                 </span>
                 </div> 
+                
         </div>
       
-        </div>
      
     );
   }

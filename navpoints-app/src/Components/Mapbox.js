@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback} from 'react';
 import "mapbox-gl/dist/mapbox-gl.css";
 import data from './data/geoData.json';
+import Nav from './Nav';
 import Map, { Marker, 
   GeolocateControl,
    NavigationControl, 
@@ -571,7 +572,7 @@ const[popup, setpopup] = useState(null)
                                  
                             </div>
                   </div>}
-                  
+                  <Nav/>
                   </div>: <div>  <h1 className="font-bold text-5xl mx-4 mt-28">
                      Log in to explore areas around you
                      </h1></div>}

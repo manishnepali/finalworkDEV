@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { auth, logInWithEmailAndPassword, signInWithGoogle, logout } from "../Backend/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import logo from '../Components/Icons/navitlogo.png'
-import Start from "./Start";
+import Nav from "./Nav";
 import { 
   BrowserRouter as Router,
   Switch,
@@ -127,6 +127,8 @@ the localStorage to logged in and sets the isLoggedIn state to true. */
         className="fixed top-0 right-0 px-8 mx-4 rounded-lg bg-red-600  
         text-white font-bold p-4  my-4  "
         onClick={signOut}>Log out</button> 
+       
+      
         {seeAdded?
         <div>
         <label for="added" class="inline-flex relative items-center cursor-pointer">
@@ -192,9 +194,11 @@ the localStorage to logged in and sets the isLoggedIn state to true. */
             
         </div>
         }
-
+       
 {seeAdded?
         <div>
+          <h1 className="font-bold text-xl mx-4">
+            Locations added by the user</h1>
           <AddedByUser></AddedByUser>
 
          </div>:<div
@@ -202,12 +206,15 @@ the localStorage to logged in and sets the isLoggedIn state to true. */
 
         {seeLiked ? 
         <div>
+           <h1 className="font-bold text-xl mx-4">
+            Locations liked by the user</h1>
+
           <LikedByUser/>
           </div>:
           <div></div>}
       </div>
 
-      
+      <Nav/>
     </div>
   );
 }

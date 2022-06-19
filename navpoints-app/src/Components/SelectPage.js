@@ -17,7 +17,7 @@ import {db,
      addDoc,
     doc} from "../Backend/firebase"
     import Select from 'react-select'
-  
+    import Nav from './Nav';
 export default function SelectPage() {
   
   localStorage.setItem("mapsOption", false);
@@ -171,7 +171,7 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                     </button>
                     </Link>
                 </div>
-                
+                <Nav/>
             </div>:
             <div>  <h1 className="font-bold text-5xl mx-4 mt-28">
             Log in to explore areas around you
@@ -185,7 +185,9 @@ const [showPage, setShowPage] = useState(Boolean(loggedIn));
                 <Route exact path="/maps">
                 <MapBox/>
                 </Route>
-               
+                <Route exact path="/login">
+                <Login/>
+                </Route>
             </Switch>
             </Router>
       </div>

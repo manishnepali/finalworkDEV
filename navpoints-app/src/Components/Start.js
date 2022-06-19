@@ -2,7 +2,7 @@ import { useState, useEffect} from 'react';
 import MapBox from './Mapbox';
 import SelectPage from './SelectPage'
 import Login from './LogIn';
-
+import Nav from './Nav';
 import {
     BrowserRouter as Router,
     Switch,
@@ -57,7 +57,7 @@ export default function Start() {
    
                     
                 </div>
-     
+     <Nav/>
             </div> 
             </Route>
              
