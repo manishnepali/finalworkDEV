@@ -1,5 +1,6 @@
 Nav It
-
+Nav it is een mobile web app/ progressive web app.
+Het is becchikbaar web maar niet geoptimaliseerd voor web omdat er  mobile first design implementaie is op gedaan.
 Om te gebruiken met git
 
 Unzip de src bestand of clone de git repository 
