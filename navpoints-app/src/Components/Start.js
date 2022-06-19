@@ -57,7 +57,7 @@ export default function Start() {
    
                     
                 </div>
-     <Nav/>
+     
             </div> 
             </Route>
              

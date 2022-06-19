@@ -26,8 +26,8 @@ export default function Nav() {
         <span class="flex flex-col items-center  px-2 pt-2">
         <NavLink to="/explore"  
              style={isActive => ({
-              backgroundColor: isActive ? "black" : "#DC2625"
-            })}>
+              backgroundColor: isActive ? "black" : "#DC2625",
+              borderRadius: isActive ? "30%": "0"            })}>
            <svg 
            id="1"
            xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,9 @@ export default function Nav() {
                 <NavLink  to="/maps"
         
                style={isActive => ({
-                backgroundColor: isActive ? "black" : "#DC2625"
+                backgroundColor: isActive ? "black" : "#DC2625",
+                borderRadius: isActive ? "30%": "0"
+                
               })}>
                   <svg
                     id="2"
@@ -78,8 +80,8 @@ export default function Nav() {
                 <span class="flex flex-col items-center px-2 pt-2">
                <NavLink  to="/login"
               style={isActive => ({
-                backgroundColor: isActive ? "black" : "#DC2625"
-              })}>
+                backgroundColor: isActive ? "black" : "#DC2625",
+                borderRadius: isActive ? "30%": "0"              })}>
                 <svg 
                   id="3"
                 xmlns="http://www.w3.org/2000/svg" 

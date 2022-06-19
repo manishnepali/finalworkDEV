@@ -33,6 +33,7 @@ import {db,
 import mapboxgl from 'mapbox-gl';
 import AddLocation from './AddLocation';
 import { map } from '@firebase/util';
+import Login from './LogIn';
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
@@ -585,6 +586,9 @@ const[popup, setpopup] = useState(null)
                 <SelectPage/>
                 </Route>
                
+                <Route exact path="/login">
+                <Login/>
+                </Route>
                 </Switch>
                 </Router>
     </div>
