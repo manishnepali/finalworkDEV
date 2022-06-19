@@ -576,7 +576,9 @@ const[popup, setpopup] = useState(null)
                   <Nav/>
                   </div>: <div>  <h1 className="font-bold text-5xl mx-4 mt-28">
                      Log in to explore areas around you
-                     </h1></div>}
+                     </h1>
+                     
+                     <Nav/></div>}
                 </Route>
                 <Route exact path="/addLocation">
                   <AddLocation/>
