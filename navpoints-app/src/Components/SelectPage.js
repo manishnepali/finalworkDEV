@@ -19,11 +19,18 @@ import {db,
     import Select from 'react-select'
   
 export default function SelectPage() {
+  
   localStorage.setItem("mapsOption", false);
   const selectedList =[];
   const [isSelected , setSelected] = useState(false)
 // selected[0] = prompt("test");
  const backimg = "https://images.unsplash.com/photo-1648737966636-2fc3a5fffc8a?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670";
+/**
+ * The function is called when a user clicks on a list item. The function checks if the background
+ * color of the list item is white or not. If it is white, the background color is changed to a light
+ * red. If it is not white, the background color is changed to white
+ * @param e - the event object
+ */
 function changeColor(e){
   
   const objSel = e.target.innerText;
@@ -53,6 +60,9 @@ function changeColor(e){
 // e.target.setBgColor("#BF100080");
 }
 const [data, setData] = useState([]);
+/**
+ * It gets the data from the database and sets it to the state
+ */
 const getData = async() =>{
   const q = query(collection(db, "event_category"));
 
@@ -64,6 +74,7 @@ const getData = async() =>{
   setData(dataSet);
   console.log(dataSet)
 }
+/* Mapping the data from the database and returning an array of objects. */
 const options = data.map((item, index)=>{
                 return  [{
                   value: index,
@@ -72,6 +83,11 @@ const options = data.map((item, index)=>{
                 
               });
  
+/**
+ * The function gets the value of the selected option from the dropdown menu and stores it in
+ * sessionStorage
+ * @param e - the event object
+ */
 function getSeleectedCategory(e){
   const selected = e.target.value;
   console.log(selected);

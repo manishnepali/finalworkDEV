@@ -35,6 +35,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+/**
+ * It signs in with Google, and if the user doesn't exist in the database, it creates a new user
+ */
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -54,6 +57,12 @@ const signInWithGoogle = async () => {
     alert(err.message);
   }
 };
+/**
+ * It tries to sign in with the given email and password, and if it fails, it logs the error and alerts
+ * the user
+ * @param email - The email address of the user.
+ * @param password - The user's password.
+ */
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -62,6 +71,13 @@ const logInWithEmailAndPassword = async (email, password) => {
     alert(err.message);
   }
 };
+/**
+ * It creates a user with the given email and password, and then adds a document to the users
+ * collection with the user's uid, name, authProvider, and email
+ * @param name - The name of the user.
+ * @param email - The email address of the user.
+ * @param password - The password for the new account.
+ */
 const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -77,6 +93,10 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     alert(err.message);
   }
 };
+/**
+ * It sends a password reset email to the user with the given email address
+ * @param email - The email address of the user to send a password reset email to.
+ */
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -86,6 +106,9 @@ const sendPasswordReset = async (email) => {
     alert(err.message);
   }
 };
+/**
+ * It signs out the user
+ */
 const logout = () => {
   signOut(auth);
 };

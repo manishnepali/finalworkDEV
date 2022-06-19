@@ -43,6 +43,7 @@ export default function MapBox() {
 
 const loggedIn = localStorage.getItem("loggedIn")
 const [showPage, setShowPage] = useState(Boolean(loggedIn));
+const [getNav, setNav] = useState("2")
 
 
 const username = localStorage.getItem("username");
@@ -54,6 +55,7 @@ const username = localStorage.getItem("username");
         console.log(data)
       const geo = data.geometry;
           console.log(localStorage.getItem("username"));
+      /* The above code is a callback function that is used to trigger the geolocate control. */
         const geolocateControlRef = useCallback((ref) => {
           if (ref) {
             // Activate as soon as the control is loaded
@@ -73,6 +75,9 @@ const username = localStorage.getItem("username");
         });
 
         //get data from firebase
+        /**
+         * It gets the data from the database and sets the state of the data
+         */
         const getData = async() =>{
           const q = query(collection(db, "geo_location"));
 
@@ -87,6 +92,8 @@ const username = localStorage.getItem("username");
       
 
 
+        /* The below code is using the useEffect hook to get the current location of the user and then
+        set the state of the user's location. */
         useEffect(()=>{
           navigator.geolocation.getCurrentPosition(function(position) {
             setLattitude(position.coords.longitude);
@@ -102,6 +109,7 @@ const username = localStorage.getItem("username");
           }
           );        
           getData();
+         
           console.log("location",dataEvent);
         },[])
   
@@ -110,6 +118,15 @@ const username = localStorage.getItem("username");
       const [dq, setDq] = useState() ;
       const filterQuery = sessionStorage.getItem("filterQuery");
       console.log(filterQuery);
+
+
+      /**
+       * This function is called when a user clicks on a marker on the map. It takes the id of the
+       * marker that was clicked on and stores it in a session storage variable. It then sets the
+       * detail page to true, which causes the detail page to render. It also sets the map to fly to
+       * the location of the marker that was clicked on
+       * @param e - the event that triggered the function
+       */
       function goToDetail(e){
         
         console.log(e.target.id)
@@ -132,6 +149,11 @@ const username = localStorage.getItem("username");
       }
       const [test, setTest] = useState(true);
    
+      /**
+       * This function is called when the user clicks the back button on the detail page. It sets the
+       * detail page to false, the test page to false, the before like page to true, the layer to
+       * false, the liked page to none, and the navigation to the user's position
+       */
       function goBackToMap(){
       setDetailPage(false);
       setTest(false);
@@ -152,6 +174,11 @@ const username = localStorage.getItem("username");
       const [directions, setDirections] = useState([]);
       const [layer, setLayer] = useState(false)
       const [navToPosition, setNavToPosition] = useState([ userLattitude , userLongitude]);
+       /**
+        * The function takes the latitude and longitude of the event and the user's current location
+        * and sends a request to the Mapbox API to get the directions from the user's current location
+        * to the event
+        */
        async function setWaypoint(){
         setTest(true)
         
@@ -171,9 +198,19 @@ const username = localStorage.getItem("username");
           setNavToPosition([ userLattitude , userLongitude])
         }
 
+        /**
+         * It sets the layer to false so u retun to detail page
+         */
         function backToWay(){
           setLayer(false);
         }
+
+
+      /**
+       * The function NavigateButton() is called when the maps is loaded in from mapbox. The function uses the
+       * useMap() hook to get the current map object. The map object is then used to fly to the
+       * navToPosition
+       */
       function NavigateButton() {
         
         const {current: map} = useMap();
@@ -186,6 +223,13 @@ const username = localStorage.getItem("username");
       const [countLikes, setLikes] = useState(document.getElementById('currentLikes'));
       const [beforeLike, setBeforeLike] = useState(true)
      console.log(beforeLike)
+     /**
+      * The function checks if the user has liked the event before, if not, it adds one to the number
+      * of likes and adds the user's username to the array of users who liked the event. If the user
+      * has liked the event before, it removes one from the number of likes and removes the user's
+      * username from the array of users who liked the event
+      * @param e - the event that is triggered when the user clicks the like button
+      */
       async function submit(e){   
         console.log("oldLikes",parseInt(countLikes)) 
         setLikes(document.getElementById('currentLikes'));
@@ -218,6 +262,10 @@ const username = localStorage.getItem("username");
             }
       }
       const [list, setList] = useState(true)
+    /**
+     * If the list is true, set it to false. If the list is false, set it to true, if false the user
+     * gets full vieuw of the map
+     */
     function toogleList(){
         if(list === true){
           setList(false)

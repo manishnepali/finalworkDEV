@@ -23,6 +23,10 @@ export default function AddedByUser() {
  const userId = localStorage.getItem("userId");
  const username = localStorage.getItem("username")
  const [dataEvent, setDataEvent] = useState([]);
+/**
+ * The above function is an async function that gets the data from the database and sets the data to
+ * the dataEvent state.
+ */
  const getData = async() =>{
     const q = query(collection(db, "geo_location"));
 

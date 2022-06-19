@@ -22,6 +22,10 @@ function Login() {
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  /**
+   * It sets the localStorage to logged out, sets the isLoggedIn state to false, and calls the logout
+   * function from the firebase.js file
+   */
   const signOut = () => {
     localStorage.setItem("logged","logged out");
     localStorage.setItem("loggedIn", "");
@@ -32,6 +36,8 @@ function Login() {
     console.log("out",localStorage.getItem("loggedIn"));
   };
 
+/* A useEffect hook that is checking if the user is logged in or not. If the user is logged in, it sets
+the localStorage to logged in and sets the isLoggedIn state to true. */
   useEffect( () => {
     if (loading) {
       // maybe trigger a loading screen
@@ -54,10 +60,20 @@ function Login() {
     };
   }, [user, loading]);
 
+ /**
+  * To display what the user had added to database
+  * If the variable seeAdded is false, then set the variable seeAdded to true. If the variable seeAdded
+  * is true, then set the variable seeAdded to false
+  */
   function goToAdded(){
     if(seeAdded == false){setSeeAddded(true)}else{setSeeAddded(false);}
     
   }
+/**
+ * to see what locations the user has liked
+ * If the user is not seeing the liked posts, then set the state to true, otherwise set the state to
+ * false
+ */
   function goToLiked(){
     if(seeLiked == false){setSeeLiked(true)}else{setSeeLiked(false);}
     

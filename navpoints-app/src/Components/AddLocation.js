@@ -30,7 +30,10 @@ export default function AddLocation() {
 const username = localStorage.getItem("username");
 const userId = localStorage.getItem("userId");
 
- //get data from fiebase
+
+/**
+ * It gets the data from the database and sets it to the state
+ */
  const getData = async() =>{
    const q = query(collection(db, "event_category"));
 
@@ -42,9 +45,11 @@ const userId = localStorage.getItem("userId");
    setData(dataSet);
    console.log(dataSet)
  } 
+ /* Generating a random number between 0 and 9999999 to use as an id for a new location that the user adds. */
  const randomNumber = Math.floor(Math.random() * 9999999);
     console.log(randomNumber)
 randomNumber.toString();
+ /* Getting the current location of the user and setting it to the state. */
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(function(position) {
       setLattitude(position.coords.latitude);
@@ -61,6 +66,10 @@ randomNumber.toString();
 
 
 const [newEvent, setNewEvent] = useState([])
+/**
+ * It takes the values from the form and creates a new document in the database
+ * @param e - the event object
+ */
 const addEventLoc= async (e)=>{
   e.preventDefault();
   

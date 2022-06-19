@@ -23,6 +23,10 @@ export default function LikedByUser() {
  const userId = localStorage.getItem("userId");
  const username = localStorage.getItem("username")
  const [dataEvent, setDataEvent] = useState([]);
+/**
+ * The above function is an async function that gets the data from the database and sets the data to
+ * the dataEvent state.
+ */
  const getData = async() =>{
     const q = query(collection(db, "geo_location"));
 
@@ -34,6 +38,7 @@ export default function LikedByUser() {
     setDataEvent(dataSet);
     console.log(dataSet)
   } 
+ /* A hook that is used to perform side effects in function components. */
   useEffect(()=>{getData()},[]);
   
   
