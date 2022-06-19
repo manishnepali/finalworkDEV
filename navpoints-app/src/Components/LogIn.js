@@ -187,7 +187,7 @@ the localStorage to logged in and sets the isLoggedIn state to true. */
         </div> : 
         <div>
            <button className="flex justify-around px-8 rounded-lg bg-red-600  
-          text-white font-bold p-4 mx-4  my-4"
+          text-white font-bold p-4  w-full my-4"
             onClick={signInWithGoogle}>
             <h1> Login with Google</h1>
             </button>
