@@ -99,7 +99,10 @@ const addEventLoc= async (e)=>{
 // const createdId = {created: arrayUnion(newPlaceId)} ;
 if(longitude == "" && latitude == ""){
 alert("set your location on to perform this action")
-}else{
+}else if(newPlaceName == "" || newDescription == ""){
+  alert("fill the name and desrription boxes")
+}
+else{
   await setDoc(docRef, payload);
   // await setDoc(docUser, createdId);
   alert("done");
